@@ -1,1 +1,598 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><title>capitulo01_protecoes</title></head><body><h1>capitulo01_protecoes</h1><p>Arquivo da apostila web gerado a partir das páginas desenvolvidas no chat.</p></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Capítulo 1 - Proteções Elétricas</title>
+
+<style>
+
+:root{
+    --azul:#003366;
+    --azul2:#0b63be;
+    --cinza:#f5f5f5;
+    --verde:#e8f4ea;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#fafafa;
+    color:#333;
+    line-height:1.8;
+}
+
+header{
+    background:var(--azul);
+    color:white;
+    text-align:center;
+    padding:50px;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:40px;
+}
+
+section{
+    background:white;
+    margin-bottom:25px;
+    padding:30px;
+    border-radius:8px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+h1,h2{
+    color:var(--azul);
+    margin-bottom:15px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+table th{
+    background:var(--azul);
+    color:white;
+}
+
+table th,
+table td{
+    border:1px solid #ccc;
+    padding:12px;
+}
+
+.formula{
+    background:#f0f6ff;
+    border-left:5px solid var(--azul2);
+    padding:15px;
+    margin:15px 0;
+    font-size:1.1rem;
+}
+
+.exemplo{
+    background:var(--verde);
+    padding:20px;
+    margin-top:15px;
+    border-radius:5px;
+}
+
+.diagrama{
+    font-family:monospace;
+    background:#f8f8f8;
+    text-align:center;
+    padding:25px;
+    margin-top:20px;
+}
+
+.exercicio{
+    background:#fff7e0;
+    padding:20px;
+    border-left:5px solid orange;
+    margin-top:20px;
+}
+
+footer{
+    text-align:center;
+    background:var(--azul);
+    color:white;
+    padding:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>CAPÍTULO 1</h1>
+
+<h2>Proteções Elétricas</h2>
+
+</header>
+
+<div class="container">
+
+<section>
+
+<h2>1. Introdução</h2>
+
+<p>
+
+Antes de qualquer circuito eletrônico ser energizado,
+é necessário protegê-lo contra falhas.
+
+</p>
+
+<p>
+
+Mesmo uma fonte simples pode sofrer danos causados por:
+
+</p>
+
+<ul>
+
+<li>Curto-circuito;</li>
+
+<li>Sobrecorrente;</li>
+
+<li>Partidas bruscas;</li>
+
+<li>Falhas de componentes;</li>
+
+<li>Surtos provenientes da rede elétrica.</li>
+
+</ul>
+
+<p>
+
+Neste projeto utilizaremos duas formas básicas de proteção:
+
+</p>
+
+<ul>
+
+<li>Fusível;</li>
+
+<li>NTC limitadora de corrente de partida.</li>
+
+</ul>
+
+</section>
+
+<section>
+
+<h2>2. Posicionamento das Proteções</h2>
+
+<p>
+Os componentes de proteção devem ser os primeiros elementos após a entrada da rede.
+</p>
+
+<div class="diagrama">
+
+REDE AC
+
+<br> │
+<br> ▼
+
+<br> FUSÍVEL
+
+<br> │
+<br> ▼
+
+<br> NTC
+
+<br> │
+<br> ▼
+
+<br> TRANSFORMADOR
+
+</div>
+
+</section>
+
+<section>
+
+<h2>3. Fusível</h2>
+
+<p>
+
+O fusível é um dispositivo projetado para abrir o circuito
+quando a corrente ultrapassa um valor pré-determinado.
+
+</p>
+
+<p>
+
+Seu funcionamento baseia-se no aquecimento de um elemento metálico interno.
+
+</p>
+
+</section>
+
+<section>
+
+<h2>4. Tipos de Fusíveis</h2>
+
+<table>
+
+<tr>
+<th>Tipo</th>
+<th>Aplicação</th>
+</tr>
+
+<tr>
+<td>Rápido (F)</td>
+<td>Circuitos sensíveis</td>
+</tr>
+
+<tr>
+<td>Retardado (T)</td>
+<td>Transformadores e motores</td>
+</tr>
+
+</table>
+
+<p>
+
+Como nossa fonte possui transformador e capacitores de filtro,
+utilizaremos um fusível retardado.
+
+</p>
+
+</section>
+
+<section>
+
+<h2>5. Dimensionamento do Fusível</h2>
+
+<p>
+
+A primeira etapa consiste em calcular a potência total da fonte.
+
+</p>
+
+<h3>Saída LM317</h3>
+
+<div class="formula">
+
+P = V × I
+
+<br>
+
+P = 33 × 1
+
+<br>
+
+P = 33W
+
+</div>
+
+<h3>Saída Zener</h3>
+
+<div class="formula">
+
+P = 33 × 0,1
+
+<br>
+
+P = 3,3W
+
+</div>
+
+<h3>Potência Total</h3>
+
+<div class="formula">
+
+Ptotal = 33 + 3,3
+
+<br>
+
+Ptotal = 36,3W
+
+</div>
+
+</section>
+
+<section>
+
+<h2>6. Corrente Consumida da Rede</h2>
+
+<p>
+
+Considerando a alimentação em 127 Vac:
+
+</p>
+
+<div class="formula">
+
+I = P / V
+
+</div>
+
+<div class="formula">
+
+I = 36,3 / 127
+
+</div>
+
+<div class="formula">
+
+I = 0,286A
+
+</div>
+
+<p>
+
+Aplicando margem de segurança de aproximadamente 70%:
+
+</p>
+
+<div class="formula">
+
+Ifusível ≈ 0,5A
+
+</div>
+
+<div class="exemplo">
+
+<strong>Fusível Selecionado:</strong>
+
+<br><br>
+
+500mA
+
+<br>
+
+Tipo retardado (T)
+
+<br>
+
+5x20mm
+
+</div>
+
+</section>
+
+<section>
+
+<h2>7. Corrente de Partida (Inrush Current)</h2>
+
+<p>
+
+Quando a fonte é ligada, o capacitor de filtro encontra-se descarregado.
+
+</p>
+
+<p>
+
+Neste instante ele se comporta como um curto-circuito.
+
+</p>
+
+<p>
+
+A corrente inicial pode ser dezenas de vezes maior que a corrente nominal.
+
+</p>
+
+<p>
+
+Esse fenômeno é conhecido como:
+
+</p>
+
+<div class="formula">
+
+INRUSH CURRENT
+
+</div>
+
+</section>
+
+<section>
+
+<h2>8. NTC</h2>
+
+<p>
+
+Para limitar essa corrente utilizaremos um termistor NTC.
+
+</p>
+
+<p>
+
+NTC significa:
+
+</p>
+
+<div class="formula">
+
+Negative Temperature Coefficient
+
+</div>
+
+<p>
+
+Sua resistência diminui com o aumento da temperatura.
+
+</p>
+
+<table>
+
+<tr>
+<th>Estado</th>
+<th>Resistência</th>
+</tr>
+
+<tr>
+<td>Frio</td>
+<td>≈ 5Ω</td>
+</tr>
+
+<tr>
+<td>Aquecido</td>
+<td>&lt; 0,5Ω</td>
+</tr>
+
+</table>
+
+</section>
+
+<section>
+
+<h2>9. Escolha da NTC</h2>
+
+<div class="exemplo">
+
+Modelo recomendado:
+
+<br><br>
+
+NTC 5D-9
+
+<br>
+
+5Ω a 25°C
+
+<br>
+
+Corrente adequada para o projeto
+
+</div>
+
+</section>
+
+<section>
+
+<h2>10. Esquema Completo da Proteção</h2>
+
+<div class="diagrama">
+
+REDE 127/220Vac
+
+<br> │
+
+<br> ▼
+
+<br> FUSÍVEL 500mA
+
+<br> │
+
+<br> ▼
+
+<br> NTC 5D-9
+
+<br> │
+
+<br> ▼
+
+<br> TRANSFORMADOR
+
+<br> 30Vac / 2A
+
+</div>
+
+</section>
+
+<section>
+
+<h2>11. Exercícios Propostos</h2>
+
+<div class="exercicio">
+
+<strong>Exercício 1</strong>
+
+<p>
+Calcule a corrente consumida pela fonte caso a potência total seja 50W em uma rede de 127V.
+</p>
+
+</div>
+
+<div class="exercicio">
+
+<strong>Exercício 2</strong>
+
+<p>
+Qual a diferença entre um fusível rápido e um fusível retardado?
+</p>
+
+</div>
+
+<div class="exercicio">
+
+<strong>Exercício 3</strong>
+
+<p>
+Por que a NTC deve ser instalada antes do transformador?
+</p>
+
+</div>
+
+</section>
+
+<section>
+
+<h2>12. Exercícios Resolvidos</h2>
+
+<h3>Exercício 1</h3>
+
+<div class="formula">
+
+I = P / V
+
+</div>
+
+<div class="formula">
+
+I = 50 / 127
+
+</div>
+
+<div class="formula">
+
+I = 0,394A
+
+</div>
+
+<p>
+
+A corrente consumida será aproximadamente:
+
+</p>
+
+<div class="formula">
+
+394mA
+
+</div>
+
+</section>
+
+</div>
+
+<footer>
+
+Projeto de Fonte Linear Dupla Regulada
+
+<br>
+
+Capítulo 1 - Proteções Elétricas
+
+</footer>
+
+</body>
+
+</html>

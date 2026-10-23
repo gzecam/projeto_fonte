@@ -1,1 +1,626 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><title>capitulo08_esquematico_completo</title></head><body><h1>capitulo08_esquematico_completo</h1><p>Arquivo da apostila web gerado a partir das páginas desenvolvidas no chat.</p></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Capítulo 8 - Esquema Completo</title>
+
+<style>
+
+:root{
+    --azul:#003366;
+    --azul2:#0d6efd;
+    --verde:#e8f5e9;
+    --amarelo:#fff8e1;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f5f5f5;
+    color:#333;
+    line-height:1.8;
+}
+
+header{
+    background:var(--azul);
+    color:white;
+    text-align:center;
+    padding:50px;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:40px;
+}
+
+section{
+    background:white;
+    padding:30px;
+    margin-bottom:25px;
+    border-radius:8px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+}
+
+h1,h2,h3{
+    color:var(--azul);
+    margin-bottom:15px;
+}
+
+.diagrama{
+    background:#f7f7f7;
+    font-family:monospace;
+    padding:25px;
+    overflow:auto;
+    text-align:left;
+    border:1px solid #ddd;
+}
+
+.formula{
+    background:#eef5ff;
+    border-left:5px solid var(--azul2);
+    padding:15px;
+    margin:15px 0;
+}
+
+.exemplo{
+    background:var(--verde);
+    padding:20px;
+    margin-top:15px;
+}
+
+.exercicio{
+    background:var(--amarelo);
+    padding:20px;
+    border-left:5px solid orange;
+    margin-top:15px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+th{
+    background:var(--azul);
+    color:white;
+}
+
+td,th{
+    border:1px solid #ccc;
+    padding:12px;
+}
+
+footer{
+    background:var(--azul);
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>CAPÍTULO 8</h1>
+
+<h2>Esquema Elétrico Completo da Fonte</h2>
+
+</header>
+
+<div class="container">
+
+<section>
+
+<h2>1. Visão Geral do Sistema</h2>
+
+<p>
+
+Neste ponto do projeto já foram desenvolvidos:
+
+</p>
+
+<ul>
+
+<li>Proteção por fusível;</li>
+
+<li>Proteção por NTC;</li>
+
+<li>Transformador 30Vac / 2A;</li>
+
+<li>Ponte retificadora;</li>
+
+<li>Filtro principal;</li>
+
+<li>Saída regulada por zener;</li>
+
+<li>Saída regulada por LM317.</li>
+
+</ul>
+
+</section>
+
+<section>
+
+<h2>2. Esquema em Blocos</h2>
+
+<div class="diagrama">
+
+REDE 127/220Vac
+
+        │
+
+        ▼
+
+     Fusível
+
+        │
+
+        ▼
+
+       NTC
+
+        │
+
+        ▼
+
+ Transformador
+  30Vac / 2A
+
+        │
+
+        ▼
+
+ Ponte Retificadora
+
+        │
+
+        ▼
+
+ Capacitor 6800µF
+
+        │
+
+      41Vcc
+
+        │
+
+   ┌────┴─────┐
+
+   │          │
+
+   ▼          ▼
+
+ ZENER      LM317
+
+33V/100mA 1,25-33V/1A
+
+</div>
+
+</section>
+
+<section>
+
+<h2>3. Esquemático Elétrico Completo</h2>
+
+<div class="diagrama">
+
+REDE AC
+
+L ── F1 ── NTC1 ──┐
+                  │
+                  │
+               T1 │
+                  │
+N ────────────────┘
+
+
+                 30Vac
+            ~~~~~~~~~~~~~
+
+                 │   │
+
+                 │   │
+
+                 └─┬─┘
+
+                   │
+
+         BR1 - Ponte Retificadora
+
+                   │
+
+                +41V
+
+                   │
+
+             C1 6800µF
+
+                   │
+
+      ┌────────────┴────────────┐
+
+      │                         │
+
+      │                         │
+
+   R1 68Ω                    LM317
+
+      │                         │
+
+      │                    R2=240Ω
+
+   DZ1 33V                     │
+
+      │                    POT 5k
+
+      │                         │
+
+    GND                       GND
+
+
+Saída 1:
+
++33V / 100mA
+
+
+Saída 2:
+
+1,25V a 33V / 1A
+
+</div>
+
+</section>
+
+<section>
+
+<h2>4. Identificação dos Componentes</h2>
+
+<table>
+
+<tr>
+<th>Referência</th>
+<th>Descrição</th>
+</tr>
+
+<tr>
+<td>F1</td>
+<td>Fusível 500mA retardado</td>
+</tr>
+
+<tr>
+<td>NTC1</td>
+<td>NTC 5D-9</td>
+</tr>
+
+<tr>
+<td>T1</td>
+<td>Transformador 30Vac / 2A</td>
+</tr>
+
+<tr>
+<td>BR1</td>
+<td>Ponte Retificadora</td>
+</tr>
+
+<tr>
+<td>C1</td>
+<td>6800µF / 63V</td>
+</tr>
+
+<tr>
+<td>DZ1</td>
+<td>Zener 33V / 5W</td>
+</tr>
+
+<tr>
+<td>R1</td>
+<td>68Ω / 2W</td>
+</tr>
+
+<tr>
+<td>U1</td>
+<td>LM317T</td>
+</tr>
+
+<tr>
+<td>R2</td>
+<td>240Ω</td>
+</tr>
+
+<tr>
+<td>P1</td>
+<td>Potenciômetro 5kΩ</td>
+</tr>
+
+</table>
+
+</section>
+
+<section>
+
+<h2>5. LED Indicador de Energização</h2>
+
+<p>
+
+Recomenda-se a instalação de um LED indicador conectado ao barramento principal de 41V.
+
+</p>
+
+<div class="formula">
+
+VLED = 2V
+
+</div>
+
+<div class="formula">
+
+ILED = 10mA
+
+</div>
+
+<div class="formula">
+
+R = (41 - 2) / 0,01
+
+</div>
+
+<div class="formula">
+
+R = 3900Ω
+
+</div>
+
+<div class="exemplo">
+
+LED Vermelho
+
+<br>
+
+Resistor 3k9 / 1W
+
+</div>
+
+</section>
+
+<section>
+
+<h2>6. Lista de Materiais (BOM)</h2>
+
+<table>
+
+<tr>
+<th>Quantidade</th>
+<th>Componente</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>Fusível 500mA retardado</td>
+</tr>
+
+<tr>
+<td>1</td>
+<td>Porta-fusível</td>
+</tr>
+
+<tr>
+<td>1</td>
+<td>NTC 5D-9</td>
+</tr>
+
+<tr>
+<td>1</td>
+<td>Transformador 30Vac / 2A</td>
+</tr>
+
+<tr>
+<td>1</td>
+<td>Ponte Retificadora 4A</td>
+</tr>
+
+<tr>
+<td>1</td>
+<td>Capacitor 6800µF / 63V</td>
+</tr>
+
+<tr>
+<td>1</td>
+<td>Zener 33V / 5W</td>
+</tr>
+
+<tr>
+<td>1</td>
+<td>Resistor 68Ω / 2W</td>
+</tr>
+
+<tr>
+<td>1</td>
+<td>LM317T</td>
+</tr>
+
+<tr>
+<td>1</td>
+<td>Resistor 240Ω</td>
+</tr>
+
+<tr>
+<td>1</td>
+<td>Potenciômetro 5kΩ</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>Capacitores 100nF</td>
+</tr>
+
+<tr>
+<td>1</td>
+<td>Capacitor 10µF</td>
+</tr>
+
+<tr>
+<td>1</td>
+<td>Dissipador TO-220</td>
+</tr>
+
+<tr>
+<td>1</td>
+<td>LED Vermelho</td>
+</tr>
+
+<tr>
+<td>1</td>
+<td>Resistor 3k9</td>
+</tr>
+
+</table>
+
+</section>
+
+<section>
+
+<h2>7. Sequência de Montagem Recomendada</h2>
+
+<ol>
+
+<li>Montar a proteção de entrada.</li>
+
+<li>Instalar o transformador.</li>
+
+<li>Montar a ponte retificadora.</li>
+
+<li>Conectar o capacitor principal.</li>
+
+<li>Verificar a tensão de 41Vcc.</li>
+
+<li>Montar a saída Zener.</li>
+
+<li>Verificar os 33V da saída fixa.</li>
+
+<li>Montar a saída LM317.</li>
+
+<li>Ajustar a tensão máxima.</li>
+
+<li>Instalar dissipador.</li>
+
+<li>Executar testes finais.</li>
+
+</ol>
+
+</section>
+
+<section>
+
+<h2>8. Pontos de Teste</h2>
+
+<table>
+
+<tr>
+<th>Ponto</th>
+<th>Tensão Esperada</th>
+</tr>
+
+<tr>
+<td>Secundário do Transformador</td>
+<td>30Vac</td>
+</tr>
+
+<tr>
+<td>Após a Ponte</td>
+<td>≈41Vcc</td>
+</tr>
+
+<tr>
+<td>Saída Zener</td>
+<td>33Vcc</td>
+</tr>
+
+<tr>
+<td>Saída LM317</td>
+<td>1,25V a 33Vcc</td>
+</tr>
+
+</table>
+
+</section>
+
+<section>
+
+<h2>9. Exercícios Propostos</h2>
+
+<div class="exercicio">
+
+<h3>Exercício 1</h3>
+
+Descreva o caminho da energia desde a entrada da rede até a saída do LM317.
+
+</div>
+
+<div class="exercicio">
+
+<h3>Exercício 2</h3>
+
+Qual componente é responsável por armazenar energia após a retificação?
+
+</div>
+
+<div class="exercicio">
+
+<h3>Exercício 3</h3>
+
+Explique a diferença entre as duas saídas do projeto.
+
+</div>
+
+</section>
+
+<section>
+
+<h2>10. Resumo do Capítulo</h2>
+
+<ul>
+
+<li>Todos os blocos foram integrados.</li>
+
+<li>Foi criado o esquemático completo da fonte.</li>
+
+<li>Foi elaborada a lista de materiais.</li>
+
+<li>Foram definidos os pontos de teste.</li>
+
+<li>O projeto está pronto para validação elétrica.</li>
+
+</ul>
+
+</section>
+
+</div>
+
+<footer>
+
+Projeto de Fonte Linear Dupla Regulada
+
+<br>
+
+Capítulo 8 - Esquema Elétrico Completo
+
+</footer>
+
+</body>
+
+</html>

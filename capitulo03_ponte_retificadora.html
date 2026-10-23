@@ -1,1 +1,649 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><title>capitulo03_ponte_retificadora</title></head><body><h1>capitulo03_ponte_retificadora</h1><p>Arquivo da apostila web gerado a partir das páginas desenvolvidas no chat.</p></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Capítulo 3 - Ponte Retificadora</title>
+
+<style>
+
+:root{
+    --azul:#003366;
+    --azulclaro:#0D6EFD;
+    --cinza:#f5f7fa;
+    --verde:#e8f5e9;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#fafafa;
+    color:#333;
+    line-height:1.8;
+}
+
+header{
+    background:var(--azul);
+    color:white;
+    text-align:center;
+    padding:50px;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:40px;
+}
+
+section{
+    background:white;
+    padding:30px;
+    margin-bottom:25px;
+    border-radius:8px;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+h1,h2,h3{
+    color:var(--azul);
+    margin-bottom:15px;
+}
+
+.formula{
+    background:#eef5ff;
+    border-left:5px solid var(--azulclaro);
+    padding:15px;
+    margin:15px 0;
+    font-family:Consolas, monospace;
+}
+
+.diagrama{
+    background:#f8f8f8;
+    padding:20px;
+    text-align:center;
+    margin-top:20px;
+    font-family:monospace;
+}
+
+.exemplo{
+    background:var(--verde);
+    padding:20px;
+    border-radius:5px;
+    margin-top:15px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+th{
+    background:var(--azul);
+    color:white;
+}
+
+th,td{
+    border:1px solid #ccc;
+    padding:12px;
+}
+
+.exercicio{
+    background:#fff3cd;
+    border-left:5px solid orange;
+    padding:20px;
+    margin-top:15px;
+}
+
+footer{
+    text-align:center;
+    background:var(--azul);
+    color:white;
+    padding:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>CAPÍTULO 3</h1>
+<h2>Ponte Retificadora de Onda Completa</h2>
+
+</header>
+
+<div class="container">
+
+<section>
+
+<h2>1. Introdução</h2>
+
+<p>
+
+O transformador reduz a tensão da rede elétrica para 30Vac.
+
+Entretanto, os circuitos eletrônicos normalmente necessitam de tensão contínua (DC).
+
+Para converter CA (Corrente Alternada) em CC (Corrente Contínua) utilizamos um circuito denominado:
+
+</p>
+
+<div class="formula">
+
+Ponte Retificadora de Onda Completa
+
+</div>
+
+</section>
+
+<section>
+
+<h2>2. O Que é Retificação?</h2>
+
+<p>
+
+Retificação é o processo de converter uma tensão alternada em uma tensão de polaridade única.
+
+</p>
+
+<p>
+
+Após a retificação a tensão ainda não é perfeitamente contínua.
+
+Ela passa a apresentar pulsos sempre positivos.
+
+</p>
+
+</section>
+
+<section>
+
+<h2>3. Ponte de Graetz</h2>
+
+<p>
+
+O circuito mais utilizado é a Ponte de Graetz, formada por quatro diodos.
+
+</p>
+
+<div class="diagrama">
+
+              D1
+      +------|>|------+
+
+      |                 |
+
+~AC---+                 +--- +V
+
+      |                 |
+
+      +------|<|------+
+              D2
+
+
+              D3
+      +------|>|------+
+
+      |                 |
+
+~AC---+                 +--- GND
+
+      |                 |
+
+      +------|<|------+
+              D4
+
+</div>
+
+</section>
+
+<section>
+
+<h2>4. Funcionamento no Semiciclo Positivo</h2>
+
+<p>
+
+Quando o terminal superior do secundário do transformador torna-se positivo:
+
+</p>
+
+<ul>
+
+<li>D1 conduz.</li>
+
+<li>D4 conduz.</li>
+
+<li>D2 permanece bloqueado.</li>
+
+<li>D3 permanece bloqueado.</li>
+
+</ul>
+
+<p>
+
+A corrente atravessa a carga sempre na mesma direção.
+
+</p>
+
+</section>
+
+<section>
+
+<h2>5. Funcionamento no Semiciclo Negativo</h2>
+
+<p>
+
+Quando a polaridade do transformador se inverte:
+
+</p>
+
+<ul>
+
+<li>D2 conduz.</li>
+
+<li>D3 conduz.</li>
+
+<li>D1 bloqueia.</li>
+
+<li>D4 bloqueia.</li>
+
+</ul>
+
+<p>
+
+Mesmo assim a corrente continua circulando na mesma direção através da carga.
+
+</p>
+
+</section>
+
+<section>
+
+<h2>6. Forma de Onda</h2>
+
+<h3>Tensão CA Original</h3>
+
+<div class="diagrama">
+
+      /\\      /\\
+
+     /  \\    /  \\
+
+----/----\\--/----\\----
+
+   /      \\/      \\
+
+</div>
+
+<h3>Após a Ponte Retificadora</h3>
+
+<div class="diagrama">
+
+      /\\      /\\
+
+     /  \\    /  \\
+
+----/----\\--/----\\----
+
+        /  \\
+
+       /    \\
+
+</div>
+
+<p>
+
+Observe que todos os semiciclos negativos foram invertidos.
+
+</p>
+
+</section>
+
+<section>
+
+<h2>7. Frequência Após a Retificação</h2>
+
+<p>
+
+A frequência da rede é:
+
+</p>
+
+<div class="formula">
+
+60Hz
+
+</div>
+
+<p>
+
+Como os dois semiciclos são aproveitados:
+
+</p>
+
+<div class="formula">
+
+f = 2 × 60
+
+</div>
+
+<div class="formula">
+
+f = 120Hz
+
+</div>
+
+<p>
+
+Esta frequência será utilizada posteriormente no cálculo do capacitor de filtro.
+
+</p>
+
+</section>
+
+<section>
+
+<h2>8. Queda de Tensão nos Diodos</h2>
+
+<p>
+
+Durante a condução atravessamos dois diodos simultaneamente.
+
+</p>
+
+<div class="formula">
+
+Vd = 0,7V
+
+</div>
+
+<div class="formula">
+
+Vtotal = 2 × 0,7
+
+</div>
+
+<div class="formula">
+
+Vtotal = 1,4V
+
+</div>
+
+<p>
+
+Portanto existe sempre uma perda de aproximadamente 1,4V.
+
+</p>
+
+</section>
+
+<section>
+
+<h2>9. Corrente Necessária no Projeto</h2>
+
+<p>
+
+Somando as duas saídas da fonte:
+
+</p>
+
+<div class="formula">
+
+ILM317 = 1A
+
+</div>
+
+<div class="formula">
+
+IZener = 0,1A
+
+</div>
+
+<div class="formula">
+
+Itotal = 1,1A
+
+</div>
+
+<p>
+
+Adotando margem de segurança:
+
+</p>
+
+<div class="formula">
+
+Iponte ≥ 3A
+
+</div>
+
+</section>
+
+<section>
+
+<h2>10. Escolha dos Diodos</h2>
+
+<h3>Opção 1 - Ponte Comercial</h3>
+
+<table>
+
+<tr>
+
+<th>Componente</th>
+<th>Corrente</th>
+<th>Tensão Reversa</th>
+
+</tr>
+
+<tr>
+
+<td>KBPC04</td>
+<td>4A</td>
+<td>1000V</td>
+
+</tr>
+
+</table>
+
+<br>
+
+<h3>Opção 2 - Diodos Individuais</h3>
+
+<table>
+
+<tr>
+
+<th>Componente</th>
+<th>Corrente</th>
+<th>Tensão Reversa</th>
+
+</tr>
+
+<tr>
+
+<td>1N5408</td>
+<td>3A</td>
+<td>1000V</td>
+
+</tr>
+
+</table>
+
+</section>
+
+<section>
+
+<h2>11. Potência Dissipada na Ponte</h2>
+
+<p>
+
+A perda típica da ponte é:
+
+</p>
+
+<div class="formula">
+
+P = V × I
+
+</div>
+
+<div class="formula">
+
+P = 1,4 × 1,1
+
+</div>
+
+<div class="formula">
+
+P = 1,54W
+
+</div>
+
+<p>
+
+Essa potência é convertida em calor nos diodos.
+
+</p>
+
+</section>
+
+<section>
+
+<h2>12. Circuito da Fonte Até Este Ponto</h2>
+
+<div class="diagrama">
+
+REDE AC
+
+    │
+
+    ▼
+
+FUSÍVEL
+
+    │
+
+    ▼
+
+NTC
+
+    │
+
+    ▼
+
+TRANSFORMADOR
+
+30Vac / 2A
+
+    │
+
+    ▼
+
+PONTE RETIFICADORA
+
+    │
+
+    ▼
+
+≈ 41Vcc Pulsante
+
+</div>
+
+</section>
+
+<section>
+
+<h2>13. Exercícios Propostos</h2>
+
+<div class="exercicio">
+
+<h3>Exercício 1</h3>
+
+Calcule a frequência após a retificação de uma rede de 50Hz.
+
+</div>
+
+<div class="exercicio">
+
+<h3>Exercício 2</h3>
+
+Quantos diodos conduzem simultaneamente em uma ponte retificadora?
+
+</div>
+
+<div class="exercicio">
+
+<h3>Exercício 3</h3>
+
+Calcule a perda total de tensão de uma ponte composta por dois diodos em condução com queda de 0,8V por diodo.
+
+</div>
+
+</section>
+
+<section>
+
+<h2>14. Exercícios Resolvidos</h2>
+
+<h3>Exercício 1</h3>
+
+<div class="formula">
+
+f = 2 × 50
+
+</div>
+
+<div class="formula">
+
+f = 100Hz
+
+</div>
+
+<h3>Exercício 2</h3>
+
+<div class="formula">
+
+Sempre 2 diodos conduzem simultaneamente.
+
+</div>
+
+<h3>Exercício 3</h3>
+
+<div class="formula">
+
+V = 2 × 0,8
+
+</div>
+
+<div class="formula">
+
+V = 1,6V
+
+</div>
+
+</section>
+
+</div>
+
+<footer>
+
+Projeto de Fonte Linear Dupla Regulada
+
+<br>
+
+Capítulo 3 - Ponte Retificadora de Onda Completa
+
+</footer>
+
+</body>
+
+</html>

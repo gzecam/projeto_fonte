@@ -1,1 +1,722 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><title>capitulo07_analise_termica</title></head><body><h1>capitulo07_analise_termica</h1><p>Arquivo da apostila web gerado a partir das páginas desenvolvidas no chat.</p></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Capítulo 7 - Análise Térmica</title>
+
+<style>
+
+:root{
+    --azul:#003366;
+    --azul2:#0d6efd;
+    --verde:#e8f5e9;
+    --vermelho:#ffebee;
+    --amarelo:#fff8e1;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f5f5f5;
+    color:#333;
+    line-height:1.8;
+}
+
+header{
+    background:var(--azul);
+    color:white;
+    text-align:center;
+    padding:50px;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:40px;
+}
+
+section{
+    background:white;
+    padding:30px;
+    margin-bottom:25px;
+    border-radius:8px;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+h1,h2,h3{
+    color:var(--azul);
+    margin-bottom:15px;
+}
+
+.formula{
+    background:#eef5ff;
+    border-left:5px solid var(--azul2);
+    padding:15px;
+    margin:15px 0;
+    font-family:Consolas, monospace;
+}
+
+.exemplo{
+    background:var(--verde);
+    padding:20px;
+    border-radius:5px;
+    margin-top:15px;
+}
+
+.alerta{
+    background:var(--vermelho);
+    padding:20px;
+    border-left:5px solid red;
+    margin-top:15px;
+}
+
+.exercicio{
+    background:var(--amarelo);
+    border-left:5px solid orange;
+    padding:20px;
+    margin-top:15px;
+}
+
+.diagrama{
+    background:#f8f8f8;
+    font-family:monospace;
+    text-align:center;
+    padding:20px;
+    margin-top:20px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+th{
+    background:var(--azul);
+    color:white;
+}
+
+td,th{
+    border:1px solid #ccc;
+    padding:12px;
+}
+
+footer{
+    background:var(--azul);
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>CAPÍTULO 7</h1>
+<h2>Análise Térmica e Dissipadores</h2>
+
+</header>
+
+<div class="container">
+
+<section>
+
+<h2>1. Introdução</h2>
+
+<p>
+
+Todo componente eletrônico possui limites de temperatura.
+
+</p>
+
+<p>
+
+Quando esses limites são ultrapassados podem ocorrer:
+
+</p>
+
+<ul>
+
+<li>destruição permanente do componente;</li>
+
+<li>redução da vida útil;</li>
+
+<li>instabilidades;</li>
+
+<li>desligamentos térmicos;</li>
+
+<li>falhas intermitentes.</li>
+
+</ul>
+
+</section>
+
+<section>
+
+<h2>2. Por que o LM317 aquece?</h2>
+
+<p>
+
+O LM317 é um regulador linear.
+
+</p>
+
+<p>
+
+Toda diferença entre a tensão de entrada e a tensão de saída é transformada em calor.
+
+</p>
+
+<div class="formula">
+
+Pd = (Vin - Vout) × I
+
+</div>
+
+</section>
+
+<section>
+
+<h2>3. Melhor Condição de Operação</h2>
+
+<p>
+
+Saída ajustada para 33V.
+
+</p>
+
+<div class="formula">
+
+Vin = 41V
+
+</div>
+
+<div class="formula">
+
+Vout = 33V
+
+</div>
+
+<div class="formula">
+
+I = 1A
+
+</div>
+
+<div class="formula">
+
+Pd = (41 - 33) × 1
+
+</div>
+
+<div class="formula">
+
+Pd = 8W
+
+</div>
+
+<p>
+
+Mesmo na melhor condição existe geração significativa de calor.
+
+</p>
+
+</section>
+
+<section>
+
+<h2>4. Pior Condição de Operação</h2>
+
+<p>
+
+A situação crítica ocorre quando o usuário reduz a tensão de saída.
+
+</p>
+
+<p>
+
+Suponha:
+
+</p>
+
+<div class="formula">
+
+Vout = 5V
+
+</div>
+
+<div class="formula">
+
+I = 1A
+
+</div>
+
+<div class="formula">
+
+Pd = (41 - 5) × 1
+
+</div>
+
+<div class="formula">
+
+Pd = 36W
+
+</div>
+
+<div class="alerta">
+
+36W é uma potência extremamente elevada para um LM317 encapsulado em TO-220.
+
+</div>
+
+</section>
+
+<section>
+
+<h2>5. Temperatura de Junção</h2>
+
+<p>
+
+O fabricante especifica uma temperatura máxima da junção.
+
+</p>
+
+<div class="formula">
+
+Tj(max) ≈ 125°C
+
+</div>
+
+<p>
+
+Acima deste valor o regulador entra em proteção térmica.
+
+</p>
+
+</section>
+
+<section>
+
+<h2>6. Resistência Térmica</h2>
+
+<p>
+
+O calor percorre diversos caminhos:
+
+</p>
+
+<div class="diagrama">
+
+Junção
+
+   │
+
+   ▼
+
+Encapsulamento
+
+   │
+
+   ▼
+
+Dissipador
+
+   │
+
+   ▼
+
+Ar Ambiente
+
+</div>
+
+<p>
+
+Cada etapa possui uma resistência térmica.
+
+</p>
+
+</section>
+
+<section>
+
+<h2>7. Modelo Térmico Simplificado</h2>
+
+<div class="formula">
+
+Tj = Ta + (Pd × Rθ)
+
+</div>
+
+Onde:
+
+<ul>
+
+<li>Tj = Temperatura da junção</li>
+<li>Ta = Temperatura ambiente</li>
+<li>Pd = Potência dissipada</li>
+<li>Rθ = Resistência térmica</li>
+</ul>
+
+</section>
+
+<section>
+
+<h2>8. LM317 Sem Dissipador</h2>
+
+<p>
+
+Valor típico:
+
+</p>
+
+<div class="formula">
+
+RθJA ≈ 50°C/W
+
+</div>
+
+<p>
+
+Analisando a condição de 8 W:
+
+</p>
+
+<div class="formula">
+
+ΔT = 8 × 50
+
+</div>
+
+<div class="formula">
+
+ΔT = 400°C
+
+</div>
+
+<div class="formula">
+
+Tj = 25 + 400
+
+</div>
+
+<div class="formula">
+
+Tj = 425°C
+
+</div>
+
+<div class="alerta">
+
+Claramente impossível. O componente queimaria ou entraria em proteção térmica.
+
+</div>
+
+</section>
+
+<section>
+
+<h2>9. Necessidade do Dissipador</h2>
+
+<p>
+
+Para manter o componente abaixo de 100°C devemos reduzir drasticamente a resistência térmica total.
+
+</p>
+
+<div class="formula">
+
+Rθ(total) ≤ 10°C/W
+
+</div>
+
+<p>
+
+Isso somente é possível utilizando dissipador de calor.
+
+</p>
+
+</section>
+
+<section>
+
+<h2>10. Dissipador Recomendado</h2>
+
+<table>
+
+<tr>
+<th>Potência</th>
+<th>Dissipador</th>
+</tr>
+
+<tr>
+<td>Até 5W</td>
+<td>Pequeno</td>
+</tr>
+
+<tr>
+<td>5W a 10W</td>
+<td>Médio</td>
+</tr>
+
+<tr>
+<td>10W a 20W</td>
+<td>Grande</td>
+</tr>
+
+<tr>
+<td>Acima de 20W</td>
+<td>Grande + Ventilação</td>
+</tr>
+
+</table>
+
+</section>
+
+<section>
+
+<h2>11. Caso Real do Projeto</h2>
+
+<div class="formula">
+
+Pd = 8W
+
+</div>
+
+<p>
+
+Quando a saída estiver ajustada em 33V.
+
+</p>
+
+<p>
+
+Recomendação prática:
+
+</p>
+
+<div class="exemplo">
+
+Dissipador TO-220
+
+<br><br>
+
+Rθ ≤ 8°C/W
+
+</div>
+
+</section>
+
+<section>
+
+<h2>12. Pasta Térmica</h2>
+
+<p>
+
+A pasta térmica reduz a resistência térmica entre o encapsulamento e o dissipador.
+
+</p>
+
+<p>
+
+Sua utilização é fortemente recomendada.
+
+</p>
+
+<div class="exemplo">
+
+Montagem recomendada:
+
+<br>
+
+LM317
+
+<br>
+
+↓
+
+<br>
+
+Pasta térmica
+
+<br>
+
+↓
+
+<br>
+
+Dissipador
+
+</div>
+
+</section>
+
+<section>
+
+<h2>13. Influência da Temperatura Ambiente</h2>
+
+<table>
+
+<tr>
+<th>Ambiente</th>
+<th>Temperatura</th>
+</tr>
+
+<tr>
+<td>Laboratório climatizado</td>
+<td>22°C</td>
+</tr>
+
+<tr>
+<td>Sala comum</td>
+<td>25°C</td>
+</tr>
+
+<tr>
+<td>Gabinete fechado</td>
+<td>40°C</td>
+</tr>
+
+</table>
+
+<p>
+
+Quanto maior a temperatura ambiente, menor será a capacidade de dissipação.
+
+</p>
+
+</section>
+
+<section>
+
+<h2>14. Exercícios Propostos</h2>
+
+<div class="exercicio">
+
+<h3>Exercício 1</h3>
+
+Calcule a potência dissipada pelo LM317 para:
+
+<br>
+
+Vin = 41V
+
+<br>
+
+Vout = 12V
+
+<br>
+
+I = 1A
+
+</div>
+
+<div class="exercicio">
+
+<h3>Exercício 2</h3>
+
+Calcule a potência dissipada para:
+
+<br>
+
+Vin = 41V
+
+<br>
+
+Vout = 24V
+
+<br>
+
+I = 1A
+
+</div>
+
+<div class="exercicio">
+
+<h3>Exercício 3</h3>
+
+Explique por que reguladores lineares possuem eficiência inferior aos reguladores chaveados.
+
+</div>
+
+</section>
+
+<section>
+
+<h2>15. Exercícios Resolvidos</h2>
+
+<h3>Exercício 1</h3>
+
+<div class="formula">
+
+Pd = (41 - 12) × 1
+
+</div>
+
+<div class="formula">
+
+Pd = 29W
+
+</div>
+
+<h3>Exercício 2</h3>
+
+<div class="formula">
+
+Pd = (41 - 24) × 1
+
+</div>
+
+<div class="formula">
+
+Pd = 17W
+
+</div>
+
+</section>
+
+<section>
+
+<h2>16. Conclusões</h2>
+
+<ul>
+
+<li>O LM317 necessitará obrigatoriamente de dissipador;</li>
+
+<li>A menor tensão de saída produz o maior aquecimento;</li>
+
+<li>A análise térmica é tão importante quanto os cálculos elétricos;</li>
+
+<li>O dissipador deve ser dimensionado durante o projeto e não apenas durante a montagem.</li>
+
+</ul>
+
+</section>
+
+</div>
+
+<footer>
+
+Projeto de Fonte Linear Dupla Regulada
+
+<br>
+
+Capítulo 7 - Análise Térmica
+
+</footer>
+
+</body>
+
+</html>

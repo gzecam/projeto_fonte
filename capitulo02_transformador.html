@@ -1,1 +1,627 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><title>capitulo02_transformador</title></head><body><h1>capitulo02_transformador</h1><p>Arquivo da apostila web gerado a partir das páginas desenvolvidas no chat.</p></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Capítulo 2 - Transformador</title>
+
+<style>
+
+:root{
+    --azul:#003366;
+    --azul2:#0B63CE;
+    --cinza:#f5f7fa;
+    --verde:#e7f6e7;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#fafafa;
+    color:#333;
+    line-height:1.8;
+}
+
+header{
+    background:var(--azul);
+    color:white;
+    text-align:center;
+    padding:50px;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:40px;
+}
+
+section{
+    background:white;
+    padding:30px;
+    margin-bottom:25px;
+    border-radius:8px;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+h1,h2,h3{
+    color:var(--azul);
+    margin-bottom:15px;
+}
+
+.formula{
+    background:#eef5ff;
+    border-left:5px solid var(--azul2);
+    padding:15px;
+    margin:15px 0;
+    font-family:Consolas, monospace;
+}
+
+.exemplo{
+    background:var(--verde);
+    padding:20px;
+    border-radius:5px;
+    margin-top:15px;
+}
+
+.diagrama{
+    background:#f8f8f8;
+    padding:20px;
+    text-align:center;
+    font-family:monospace;
+    margin-top:20px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+th{
+    background:var(--azul);
+    color:white;
+}
+
+td,th{
+    border:1px solid #ccc;
+    padding:12px;
+}
+
+.exercicio{
+    background:#fff8e1;
+    border-left:5px solid orange;
+    padding:20px;
+    margin-top:15px;
+}
+
+footer{
+    background:var(--azul);
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>CAPÍTULO 2</h1>
+
+<h2>Dimensionamento do Transformador</h2>
+
+</header>
+
+<div class="container">
+
+<section>
+
+<h2>1. Introdução</h2>
+
+<p>
+
+O transformador é responsável por:
+
+</p>
+
+<ul>
+
+<li>Isolar eletricamente a rede da carga;</li>
+
+<li>Reduzir a tensão da rede elétrica;</li>
+
+<li>Fornecer energia para os estágios seguintes da fonte.</li>
+
+</ul>
+
+<p>
+
+O correto dimensionamento do transformador é fundamental para garantir o funcionamento adequado da fonte.
+
+</p>
+
+</section>
+
+<section>
+
+<h2>2. Potência das Cargas</h2>
+
+<h3>Saída LM317</h3>
+
+<div class="formula">
+
+P = V × I
+
+<br><br>
+
+P = 33 × 1
+
+<br><br>
+
+P = 33W
+
+</div>
+
+<h3>Saída Zener</h3>
+
+<div class="formula">
+
+P = 33 × 0,1
+
+<br><br>
+
+P = 3,3W
+
+</div>
+
+</section>
+
+<section>
+
+<h2>3. Potência Total da Fonte</h2>
+
+<div class="formula">
+
+Ptotal = 33 + 3,3
+
+<br><br>
+
+Ptotal = 36,3W
+
+</div>
+
+<p>
+
+Entretanto, nenhuma fonte possui rendimento de 100%.
+
+</p>
+
+<p>
+
+Existem perdas:
+
+</p>
+
+<ul>
+
+<li>Transformador;</li>
+<li>Ponte retificadora;</li>
+<li>Reguladores;</li>
+<li>Efeito Joule;</li>
+
+</ul>
+
+</section>
+
+<section>
+
+<h2>4. Margem de Projeto</h2>
+
+<p>
+
+Em projetos reais adotamos uma margem de segurança.
+
+</p>
+
+<div class="formula">
+
+Pprojeto = 36,3 × 1,5
+
+</div>
+
+<div class="formula">
+
+Pprojeto = 54,45W
+
+</div>
+
+<p>
+
+Arredondando:
+
+</p>
+
+<div class="formula">
+
+Pprojeto ≈ 60W
+
+</div>
+
+</section>
+
+<section>
+
+<h2>5. Potência Aparente (VA)</h2>
+
+<p>
+
+Transformadores normalmente são especificados em Volt-Ampère (VA).
+
+</p>
+
+<div class="formula">
+
+VA = Vac × Iac
+
+</div>
+
+<p>
+
+Portanto devemos selecionar um transformador capaz de fornecer aproximadamente 60VA.
+
+</p>
+
+</section>
+
+<section>
+
+<h2>6. Determinação da Tensão Secundária</h2>
+
+<p>
+
+Precisamos obter aproximadamente 33V regulados na saída LM317.
+
+</p>
+
+<p>
+
+O LM317 necessita de tensão de sobra para regular corretamente.
+
+</p>
+
+<div class="formula">
+
+Margem ≈ 3V
+
+</div>
+
+<div class="formula">
+
+Vin mínimo = 33 + 3
+
+</div>
+
+<div class="formula">
+
+Vin mínimo = 36V
+
+</div>
+
+</section>
+
+<section>
+
+<h2>7. Conversão CA para CC</h2>
+
+<p>
+
+Após a ponte retificadora e o capacitor, a tensão é aproximadamente:
+
+</p>
+
+<div class="formula">
+
+Vcc ≈ Vac × 1,414
+
+</div>
+
+<p>
+
+Escolhendo inicialmente 30Vac:
+
+</p>
+
+<div class="formula">
+
+Vcc = 30 × 1,414
+
+</div>
+
+<div class="formula">
+
+Vcc = 42,42V
+
+</div>
+
+</section>
+
+<section>
+
+<h2>8. Queda de Tensão nos Diodos</h2>
+
+<p>
+
+Em uma ponte retificadora sempre conduzem dois diodos.
+
+</p>
+
+<div class="formula">
+
+Vd = 0,7V por diodo
+
+</div>
+
+<div class="formula">
+
+Vtotal = 2 × 0,7
+
+</div>
+
+<div class="formula">
+
+Vtotal = 1,4V
+
+</div>
+
+Portanto:
+
+<div class="formula">
+
+Vcc = 42,4 - 1,4
+
+</div>
+
+<div class="formula">
+
+Vcc ≈ 41V
+
+</div>
+
+<p>
+
+Esse valor atende perfeitamente ao projeto.
+
+</p>
+
+</section>
+
+<section>
+
+<h2>9. Corrente do Secundário</h2>
+
+<p>
+
+A corrente total de saída será:
+
+</p>
+
+<div class="formula">
+
+Itotal = 1A + 0,1A
+
+</div>
+
+<div class="formula">
+
+Itotal = 1,1A
+
+</div>
+
+<p>
+
+Aplicando uma margem confortável:
+
+</p>
+
+<div class="formula">
+
+Isec = 2A
+
+</div>
+
+</section>
+
+<section>
+
+<h2>10. Transformador Selecionado</h2>
+
+<table>
+
+<tr>
+<th>Parâmetro</th>
+<th>Valor</th>
+</tr>
+
+<tr>
+<td>Primário</td>
+<td>127/220Vac</td>
+</tr>
+
+<tr>
+<td>Secundário</td>
+<td>30Vac</td>
+</tr>
+
+<tr>
+<td>Corrente</td>
+<td>2A</td>
+</tr>
+
+<tr>
+<td>Potência</td>
+<td>60VA</td>
+</tr>
+
+</table>
+
+</section>
+
+<section>
+
+<h2>11. Diagrama do Transformador</h2>
+
+<div class="diagrama">
+
+127V / 220V
+
+<br>
+~~~ Primário ~~~
+
+<br><br>
+
+│
+
+<br>
+
+▼
+
+<br>
+
+[ TRANSFORMADOR ]
+
+<br>
+
+30Vac / 2A
+
+<br>
+
+▲
+
+<br>
+
+│
+
+<br><br>
+
+~~~ Secundário ~~~
+
+</div>
+
+</section>
+
+<section>
+
+<h2>12. Exercícios Propostos</h2>
+
+<div class="exercicio">
+
+<strong>Exercício 1</strong>
+
+<p>
+
+Uma fonte necessita fornecer 24V e 2A.
+Calcule sua potência.
+
+</p>
+
+</div>
+
+<div class="exercicio">
+
+<strong>Exercício 2</strong>
+
+<p>
+
+Qual a tensão contínua aproximada obtida após a retificação
+de um secundário de 18Vac?
+
+</p>
+
+</div>
+
+<div class="exercicio">
+
+<strong>Exercício 3</strong>
+
+<p>
+
+Por que é importante adicionar margem de potência ao transformador?
+
+</p>
+
+</div>
+
+</section>
+
+<section>
+
+<h2>13. Exercícios Resolvidos</h2>
+
+<h3>Exercício 1</h3>
+
+<div class="formula">
+
+P = V × I
+
+</div>
+
+<div class="formula">
+
+P = 24 × 2
+
+</div>
+
+<div class="formula">
+
+P = 48W
+
+</div>
+
+<h3>Exercício 2</h3>
+
+<div class="formula">
+
+Vcc = 18 × 1,414
+
+</div>
+
+<div class="formula">
+
+Vcc = 25,45V
+
+</div>
+
+<div class="formula">
+
+Vcc ≈ 24V após perdas dos diodos
+
+</div>
+
+</section>
+
+</div>
+
+<footer>
+
+Projeto de Fonte Linear Dupla Regulada
+
+<br>
+
+Capítulo 2 - Transformador
+
+</footer>
+
+</body>
+
+</html>

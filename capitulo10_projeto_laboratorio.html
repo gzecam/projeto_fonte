@@ -1,1 +1,677 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><title>capitulo10_projeto_laboratorio</title></head><body><h1>capitulo10_projeto_laboratorio</h1><p>Arquivo da apostila web gerado a partir das páginas desenvolvidas no chat.</p></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Capítulo 9 - Ensaios e Comissionamento</title>
+
+<style>
+
+:root{
+    --azul:#003366;
+    --azul2:#0D6EFD;
+    --verde:#E8F5E9;
+    --amarelo:#FFF8E1;
+    --vermelho:#FFEBEE;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f5f5f5;
+    color:#333;
+    line-height:1.8;
+}
+
+header{
+    background:var(--azul);
+    color:white;
+    text-align:center;
+    padding:50px;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:40px;
+}
+
+section{
+    background:white;
+    padding:30px;
+    margin-bottom:25px;
+    border-radius:8px;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+h1,h2,h3{
+    color:var(--azul);
+}
+
+.formula{
+    background:#eef5ff;
+    border-left:5px solid var(--azul2);
+    padding:15px;
+    margin:15px 0;
+}
+
+.exemplo{
+    background:var(--verde);
+    padding:20px;
+    margin-top:15px;
+}
+
+.alerta{
+    background:var(--vermelho);
+    padding:20px;
+    border-left:5px solid red;
+    margin-top:15px;
+}
+
+.exercicio{
+    background:var(--amarelo);
+    padding:20px;
+    border-left:5px solid orange;
+    margin-top:15px;
+}
+
+.diagrama{
+    background:#f8f8f8;
+    font-family:monospace;
+    padding:20px;
+    margin-top:20px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+th{
+    background:var(--azul);
+    color:white;
+}
+
+th,td{
+    border:1px solid #ccc;
+    padding:12px;
+}
+
+footer{
+    background:var(--azul);
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>CAPÍTULO 9</h1>
+
+<h2>Ensaios, Medições e Comissionamento</h2>
+
+</header>
+
+<div class="container">
+
+<section>
+
+<h2>1. Objetivos do Comissionamento</h2>
+
+<p>
+
+Após a montagem física da fonte, é necessário verificar:
+
+</p>
+
+<ul>
+
+<li>Ausência de curto-circuitos;</li>
+
+<li>Tensões corretas em cada estágio;</li>
+
+<li>Funcionamento dos reguladores;</li>
+
+<li>Ripple dentro do especificado;</li>
+
+<li>Aquecimento dos componentes;</li>
+
+<li>Estabilidade da fonte sob carga.</li>
+
+</ul>
+
+</section>
+
+<section>
+
+<h2>2. Inspeção Visual Inicial</h2>
+
+<p>
+
+Antes de energizar o circuito, verificar:
+
+</p>
+
+<ul>
+
+<li>Polaridade dos capacitores;</li>
+
+<li>Orientação da ponte retificadora;</li>
+
+<li>Orientação do LM317;</li>
+
+<li>Orientação do zener;</li>
+
+<li>Soldas frias;</li>
+
+<li>Curto entre trilhas.</li>
+
+</ul>
+
+<div class="alerta">
+
+Nunca energize uma placa sem realizar inspeção visual completa.
+
+</div>
+
+</section>
+
+<section>
+
+<h2>3. Teste de Continuidade</h2>
+
+<p>
+
+Utilizando um multímetro na escala de continuidade:
+
+</p>
+
+<ul>
+
+<li>Verifique se não existe curto entre +V e GND;</li>
+
+<li>Verifique continuidade das trilhas;</li>
+
+<li>Confirme conexões do transformador.</li>
+
+</ul>
+
+</section>
+
+<section>
+
+<h2>4. Primeira Energização</h2>
+
+<p>
+
+Aplicar tensão da rede mantendo as saídas desconectadas.
+
+</p>
+
+<p>
+
+Medir inicialmente a tensão no secundário do transformador.
+
+</p>
+
+<div class="formula">
+
+Vsec ≈ 30Vac
+
+</div>
+
+</section>
+
+<section>
+
+<h2>5. Medição Após a Ponte Retificadora</h2>
+
+<p>
+
+Posicionar o multímetro em tensão contínua.
+
+</p>
+
+<p>
+
+Medir entre os terminais positivo e negativo do capacitor de filtro.
+
+</p>
+
+<div class="formula">
+
+Vcc ≈ 41V
+
+</div>
+
+<table>
+
+<tr>
+<th>Medição</th>
+<th>Valor Esperado</th>
+</tr>
+
+<tr>
+<td>Após Ponte</td>
+<td>40V a 42V</td>
+</tr>
+
+</table>
+
+</section>
+
+<section>
+
+<h2>6. Teste da Saída Zener</h2>
+
+<p>
+
+Sem carga conectada:
+
+</p>
+
+<div class="formula">
+
+Vz ≈ 33V
+
+</div>
+
+<p>
+
+A tensão poderá variar alguns décimos de volt devido à tolerância do zener.
+
+</p>
+
+<table>
+
+<tr>
+<th>Valor Aceitável</th>
+</tr>
+
+<tr>
+<td>32V a 34V</td>
+</tr>
+
+</table>
+
+</section>
+
+<section>
+
+<h2>7. Teste da Saída LM317</h2>
+
+<p>
+
+Movimentar o potenciômetro lentamente.
+
+</p>
+
+<table>
+
+<tr>
+<th>Posição</th>
+<th>Tensão Esperada</th>
+</tr>
+
+<tr>
+<td>Mínimo</td>
+<td>≈1,25V</td>
+</tr>
+
+<tr>
+<td>Máximo</td>
+<td>≈32,5V a 33V</td>
+</tr>
+
+</table>
+
+</section>
+
+<section>
+
+<h2>8. Medição do Ripple</h2>
+
+<p>
+
+Utilizar um osciloscópio conectado no capacitor principal.
+
+</p>
+
+<div class="diagrama">
+
+Osciloscópio
+
+  CH1+
+
+    │
+
+    ▼
+
+ +41Vcc
+
+    │
+
+ 6800µF
+
+    │
+
+   GND
+
+</div>
+
+<p>
+
+Ripple previsto:
+
+</p>
+
+<div class="formula">
+
+Vr ≈ 2Vpp
+
+</div>
+
+</section>
+
+<section>
+
+<h2>9. Ensaio com Carga</h2>
+
+<p>
+
+A carga pode ser implementada utilizando resistores de potência.
+
+</p>
+
+<table>
+
+<tr>
+<th>Saída</th>
+<th>Corrente</th>
+<th>Resistor Aproximado</th>
+</tr>
+
+<tr>
+<td>Zener</td>
+<td>100mA</td>
+<td>330Ω / 5W</td>
+</tr>
+
+<tr>
+<td>LM317</td>
+<td>1A</td>
+<td>33Ω / 50W</td>
+</tr>
+
+</table>
+
+</section>
+
+<section>
+
+<h2>10. Regulação de Carga</h2>
+
+<p>
+
+A regulação de carga mede quanto a tensão varia quando a corrente muda.
+
+</p>
+
+<div class="formula">
+
+Regulação (%) =
+
+(Vsem carga - Vcom carga)
+
+÷
+
+Vcom carga × 100
+
+</div>
+
+</section>
+
+<section>
+
+<h2>11. Exemplo de Regulação</h2>
+
+<p>
+
+Suponha:
+
+</p>
+
+<div class="formula">
+
+Vsem carga = 33,1V
+
+</div>
+
+<div class="formula">
+
+Vcom carga = 32,8V
+
+</div>
+
+<div class="formula">
+
+Regulação = 0,3 ÷ 32,8
+
+</div>
+
+<div class="formula">
+
+Regulação = 0,91%
+
+</div>
+
+</section>
+
+<section>
+
+<h2>12. Ensaio Térmico</h2>
+
+<p>
+
+Após 15 minutos de operação em carga máxima:
+
+</p>
+
+<ul>
+
+<li>Verificar temperatura do LM317;</li>
+
+<li>Verificar temperatura do resistor Rs do zener;</li>
+
+<li>Verificar temperatura da ponte retificadora.</li>
+
+</ul>
+
+<div class="exemplo">
+
+Temperatura confortável ao toque:
+
+até aproximadamente 60°C
+
+</div>
+
+</section>
+
+<section>
+
+<h2>13. Tabela de Registro Experimental</h2>
+
+<table>
+
+<tr>
+
+<th>Medição</th>
+<th>Esperado</th>
+<th>Obtido</th>
+
+</tr>
+
+<tr>
+<td>Transformador</td>
+<td>30Vac</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Barramento DC</td>
+<td>41V</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Saída Zener</td>
+<td>33V</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Saída LM317 Mín.</td>
+<td>1,25V</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Saída LM317 Máx.</td>
+<td>33V</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Ripple</td>
+<td>≈2Vpp</td>
+<td></td>
+</tr>
+
+</table>
+
+</section>
+
+<section>
+
+<h2>14. Exercícios Propostos</h2>
+
+<div class="exercicio">
+
+Determinar a regulação para:
+
+<br>
+
+Vsem carga = 33,0V
+
+<br>
+
+Vcom carga = 32,7V
+
+</div>
+
+<div class="exercicio">
+
+Determinar a potência dissipada em um resistor de carga de 330Ω alimentado por 33V.
+
+</div>
+
+<div class="exercicio">
+
+Explique a finalidade do ensaio térmico.
+
+</div>
+
+</section>
+
+<section>
+
+<h2>15. Exercícios Resolvidos</h2>
+
+<h3>Exercício 1</h3>
+
+<div class="formula">
+
+Reg = (33,0 - 32,7)
+
+÷
+
+32,7 × 100
+
+</div>
+
+<div class="formula">
+
+Reg = 0,92%
+
+</div>
+
+<h3>Exercício 2</h3>
+
+<div class="formula">
+
+P = V²/R
+
+</div>
+
+<div class="formula">
+
+P = 33² / 330
+
+</div>
+
+<div class="formula">
+
+P = 3,3W
+
+</div>
+
+</section>
+
+<section>
+
+<h2>16. Conclusão do Comissionamento</h2>
+
+<p>
+
+Após a conclusão de todos os ensaios e medições, a fonte pode ser considerada validada.
+
+</p>
+
+<p>
+
+A partir deste ponto o projeto encontra-se apto para utilização em laboratório e para comparação experimental entre os reguladores Zener e LM317.
+
+</p>
+
+</section>
+
+</div>
+
+<footer>
+
+Projeto de Fonte Linear Dupla Regulada
+
+<br>
+
+Capítulo 9 - Ensaios e Comissionamento
+
+</footer>
+
+</body>
+
+</html>

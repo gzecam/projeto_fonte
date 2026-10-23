@@ -1,1 +1,773 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><title>capitulo05_zener</title></head><body><h1>capitulo05_zener</h1><p>Arquivo da apostila web gerado a partir das páginas desenvolvidas no chat.</p></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Capítulo 5 - Regulador por Diodo Zener</title>
+
+<style>
+
+:root{
+    --azul:#003366;
+    --azul2:#0b63ce;
+    --verde:#e8f5e9;
+    --amarelo:#fff8e1;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f7f7f7;
+    line-height:1.8;
+    color:#333;
+}
+
+header{
+    background:var(--azul);
+    color:white;
+    text-align:center;
+    padding:50px;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:40px;
+}
+
+section{
+    background:white;
+    padding:30px;
+    margin-bottom:25px;
+    border-radius:8px;
+    box-shadow:0 2px 8px rgba(0,0,0,.1);
+}
+
+h1,h2,h3{
+    color:var(--azul);
+    margin-bottom:15px;
+}
+
+.formula{
+    background:#eef5ff;
+    border-left:5px solid var(--azul2);
+    padding:15px;
+    margin:15px 0;
+    font-family:Consolas, monospace;
+}
+
+.diagrama{
+    background:#f8f8f8;
+    text-align:center;
+    padding:20px;
+    margin-top:20px;
+    font-family:monospace;
+}
+
+.exemplo{
+    background:var(--verde);
+    padding:20px;
+    margin-top:15px;
+    border-radius:5px;
+}
+
+.exercicio{
+    background:var(--amarelo);
+    border-left:5px solid orange;
+    padding:20px;
+    margin-top:15px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+th{
+    background:var(--azul);
+    color:white;
+}
+
+th,td{
+    border:1px solid #ccc;
+    padding:12px;
+}
+
+footer{
+    text-align:center;
+    background:var(--azul);
+    color:white;
+    padding:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>CAPÍTULO 5</h1>
+
+<h2>Regulador de Tensão por Diodo Zener</h2>
+
+</header>
+
+<div class="container">
+
+<section>
+
+<h2>1. Introdução</h2>
+
+<p>
+
+Após a retificação e filtragem obtivemos uma tensão aproximada de:
+
+</p>
+
+<div class="formula">
+
+Ventrada ≈ 41Vcc
+
+</div>
+
+<p>
+
+Esta tensão varia com:
+
+</p>
+
+<ul>
+
+<li>Flutuações da rede elétrica;</li>
+
+<li>Ripple residual;</li>
+
+<li>Corrente consumida pela carga.</li>
+
+</ul>
+
+<p>
+
+Precisamos então criar uma tensão estável e regulada.
+
+</p>
+
+</section>
+
+<section>
+
+<h2>2. O Diodo Zener</h2>
+
+<p>
+
+O diodo zener é um dispositivo semicondutor projetado para operar na região de ruptura reversa.
+
+</p>
+
+<p>
+
+Quando polarizado reversamente e atingida sua tensão de ruptura, ele mantém a tensão praticamente constante em seus terminais.
+
+</p>
+
+</section>
+
+<section>
+
+<h2>3. Curva Característica do Zener</h2>
+
+<div class="diagrama">
+
+Corrente
+
+   ↑
+
+   │
+   │
+   │                /
+   │               /
+   │              /
+---┼-------------/--------------► Tensão
+   │
+   │
+   │
+   │
+   │
+   └─────────────┐
+                 │
+                 │ Região
+                 │ Zener
+
+</div>
+
+<p>
+
+Após atingir a tensão zener, grandes variações de corrente provocam pequenas variações de tensão.
+
+</p>
+
+</section>
+
+<section>
+
+<h2>4. Especificação da Saída</h2>
+
+<table>
+
+<tr>
+<th>Parâmetro</th>
+<th>Valor</th>
+</tr>
+
+<tr>
+<td>Tensão de Saída</td>
+<td>33Vcc</td>
+</tr>
+
+<tr>
+<td>Corrente Máxima</td>
+<td>100mA</td>
+</tr>
+
+<tr>
+<td>Regulador</td>
+<td>Diodo Zener</td>
+</tr>
+
+</table>
+
+</section>
+
+<section>
+
+<h2>5. Circuito Regulador</h2>
+
+<div class="diagrama">
+
++41V
+
+ │
+
+ Rs
+
+ │
+
+ ├───────────────► +33V
+
+ │
+
+ ┌─|<|─┐
+
+ │Zener│
+
+ └─────┘
+
+ │
+
+ GND
+
+</div>
+
+<p>
+
+O resistor limita a corrente enquanto o zener estabiliza a tensão.
+
+</p>
+
+</section>
+
+<section>
+
+<h2>6. Escolha do Diodo Zener</h2>
+
+<p>
+
+Desejamos uma saída de 33V.
+
+</p>
+
+<div class="formula">
+
+Vz = 33V
+
+</div>
+
+<p>
+
+Além disso, precisamos suportar aproximadamente 4W durante condições críticas.
+
+</p>
+
+<div class="exemplo">
+
+Componente sugerido:
+
+<br><br>
+
+1N5367B
+
+<br>
+
+Vz = 33V
+
+<br>
+
+Potência = 5W
+
+</div>
+
+</section>
+
+<section>
+
+<h2>7. Corrente do Projeto</h2>
+
+<p>
+
+A saída deverá fornecer:
+
+</p>
+
+<div class="formula">
+
+Icarga = 100mA
+
+</div>
+
+<p>
+
+Além disso, o zener deve conduzir uma corrente mínima para manter a regulação.
+
+</p>
+
+<div class="formula">
+
+Iz = 20mA
+
+</div>
+
+<p>
+
+Assim:
+
+</p>
+
+<div class="formula">
+
+Itotal = Icarga + Iz
+
+</div>
+
+<div class="formula">
+
+Itotal = 100mA + 20mA
+
+</div>
+
+<div class="formula">
+
+Itotal = 120mA
+
+</div>
+
+</section>
+
+<section>
+
+<h2>8. Cálculo do Resistor Série</h2>
+
+<p>
+
+Aplicando a Lei de Ohm:
+
+</p>
+
+<div class="formula">
+
+Rs = (Vin − Vz) / I
+
+</div>
+
+<div class="formula">
+
+Rs = (41 − 33) / 0,12
+
+</div>
+
+<div class="formula">
+
+Rs = 8 / 0,12
+
+</div>
+
+<div class="formula">
+
+Rs = 66,7Ω
+
+</div>
+
+<p>
+
+Escolha comercial:
+
+</p>
+
+<div class="formula">
+
+Rs = 68Ω
+
+</div>
+
+</section>
+
+<section>
+
+<h2>9. Potência Dissipada no Resistor</h2>
+
+<div class="formula">
+
+P = V × I
+
+</div>
+
+<div class="formula">
+
+P = 8 × 0,12
+
+</div>
+
+<div class="formula">
+
+P = 0,96W
+
+</div>
+
+<p>
+
+Aplicando margem de segurança:
+
+</p>
+
+<div class="formula">
+
+Resistor 68Ω / 2W
+
+</div>
+
+</section>
+
+<section>
+
+<h2>10. Potência Máxima no Zener</h2>
+
+<p>
+
+A pior condição ocorre quando não existe carga conectada.
+
+</p>
+
+<p>
+
+Toda corrente passa pelo zener.
+
+</p>
+
+<div class="formula">
+
+Iz = 120mA
+
+</div>
+
+<div class="formula">
+
+Pz = Vz × Iz
+
+</div>
+
+<div class="formula">
+
+Pz = 33 × 0,12
+
+</div>
+
+<div class="formula">
+
+Pz = 3,96W
+
+</div>
+
+<p>
+
+Portanto:
+
+</p>
+
+<div class="formula">
+
+Zener mínimo = 5W
+
+</div>
+
+</section>
+
+<section>
+
+<h2>11. Eficiência do Regulador Zener</h2>
+
+<p>
+
+Potência útil:
+
+</p>
+
+<div class="formula">
+
+Putil = 33 × 0,1
+
+</div>
+
+<div class="formula">
+
+Putil = 3,3W
+
+</div>
+
+<p>
+
+Potência consumida:
+
+</p>
+
+<div class="formula">
+
+Pentrada = 41 × 0,12
+
+</div>
+
+<div class="formula">
+
+Pentrada = 4,92W
+
+</div>
+
+<p>
+
+Eficiência aproximada:
+
+</p>
+
+<div class="formula">
+
+η = (3,3 / 4,92) × 100
+
+</div>
+
+<div class="formula">
+
+η ≈ 67%
+
+</div>
+
+</section>
+
+<section>
+
+<h2>12. Vantagens e Desvantagens</h2>
+
+<table>
+
+<tr>
+<th>Vantagens</th>
+<th>Desvantagens</th>
+</tr>
+
+<tr>
+<td>Circuito simples</td>
+<td>Baixa eficiência</td>
+</tr>
+
+<tr>
+<td>Baixo custo</td>
+<td>Corrente limitada</td>
+</tr>
+
+<tr>
+<td>Fácil cálculo</td>
+<td>Dissipação elevada</td>
+</tr>
+
+<tr>
+<td>Poucos componentes</td>
+<td>Regulação inferior ao LM317</td>
+</tr>
+
+</table>
+
+</section>
+
+<section>
+
+<h2>13. Exercícios Propostos</h2>
+
+<div class="exercicio">
+
+<h3>Exercício 1</h3>
+
+Calcule Rs para:
+
+<br>
+
+Vin = 24V
+
+<br>
+
+Vz = 12V
+
+<br>
+
+I = 50mA
+
+</div>
+
+<div class="exercicio">
+
+<h3>Exercício 2</h3>
+
+Calcule a potência dissipada pelo resistor do Exercício 1.
+
+</div>
+
+<div class="exercicio">
+
+<h3>Exercício 3</h3>
+
+Explique por que o zener precisa conduzir corrente mesmo sem carga.
+
+</div>
+
+</section>
+
+<section>
+
+<h2>14. Exercícios Resolvidos</h2>
+
+<h3>Exercício 1</h3>
+
+<div class="formula">
+
+Rs = (24 - 12) / 0,05
+
+</div>
+
+<div class="formula">
+
+Rs = 240Ω
+
+</div>
+
+<h3>Exercício 2</h3>
+
+<div class="formula">
+
+P = V × I
+
+</div>
+
+<div class="formula">
+
+P = 12 × 0,05
+
+</div>
+
+<div class="formula">
+
+P = 0,6W
+
+</div>
+
+</section>
+
+<section>
+
+<h2>15. Circuito Desenvolvido Até o Momento</h2>
+
+<div class="diagrama">
+
+REDE
+
+ │
+
+ ▼
+
+FUSÍVEL
+
+ │
+
+ ▼
+
+NTC
+
+ │
+
+ ▼
+
+TRANSFORMADOR
+
+ │
+
+ ▼
+
+PONTE
+
+ │
+
+ ▼
+
+6800µF
+
+ │
+
+ ▼
+
+41Vcc
+
+ │
+
+ ├────────► SAÍDA ZENER
+
+ │           33V / 100mA
+
+ └────────► Próximo capítulo
+
+             LM317
+
+</div>
+
+</section>
+
+</div>
+
+<footer>
+
+Projeto de Fonte Linear Dupla Regulada
+
+<br>
+
+Capítulo 5 - Regulador por Diodo Zener
+
+</footer>
+
+</body>
+
+</html>

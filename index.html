@@ -1,1 +1,379 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><title>index</title></head><body><h1>index</h1><p>Arquivo da apostila web gerado a partir das páginas desenvolvidas no chat.</p></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Projeto de Fonte Linear Dupla Regulada</title>
+
+<style>
+
+:root{
+    --azul:#003366;
+    --azul-claro:#0e5aa7;
+    --cinza:#f4f4f4;
+    --texto:#333;
+    --branco:#ffffff;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    line-height:1.7;
+    color:var(--texto);
+    background:#fafafa;
+}
+
+header{
+    background:var(--azul);
+    color:white;
+    padding:60px 30px;
+    text-align:center;
+}
+
+header h1{
+    font-size:3rem;
+}
+
+header h2{
+    font-weight:normal;
+    margin-top:15px;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:40px;
+}
+
+section{
+    background:white;
+    margin-bottom:30px;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
+}
+
+h2{
+    color:var(--azul);
+    margin-bottom:20px;
+}
+
+h3{
+    color:var(--azul-claro);
+    margin-top:20px;
+    margin-bottom:10px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+th{
+    background:var(--azul);
+    color:white;
+}
+
+th, td{
+    border:1px solid #ccc;
+    padding:12px;
+}
+
+ul{
+    margin-left:25px;
+}
+
+.block{
+    background:#eef6ff;
+    border-left:6px solid var(--azul);
+    padding:20px;
+    margin-top:20px;
+}
+
+.diagram{
+    text-align:center;
+    font-family:monospace;
+    font-size:1rem;
+    margin-top:20px;
+    padding:20px;
+    background:#f8f8f8;
+    border-radius:8px;
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    background:var(--azul);
+    color:white;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h1>PROJETO DE FONTE LINEAR DUPLA REGULADA</h1>
+
+<h2>
+Saída Zener 33V / 100mA<br>
+Saída LM317 1,25V a 33V / 1A
+</h2>
+
+</header>
+
+<div class="container">
+
+<section>
+
+<h2>Apresentação</h2>
+
+<p>
+Esta apostila tem como objetivo desenvolver o projeto completo de uma fonte linear
+de alimentação de forma prática e aplicada à Engenharia Elétrica.
+</p>
+
+<p>
+Durante o desenvolvimento serão estudados os conceitos de proteção elétrica,
+transformadores, retificação, filtragem capacitiva e regulação de tensão utilizando
+duas tecnologias distintas:
+</p>
+
+<ul>
+<li>Regulação através de diodo Zener</li>
+<li>Regulação através do circuito integrado LM317</li>
+</ul>
+
+<p>
+Ao final da apostila o estudante será capaz de dimensionar seus próprios circuitos
+de alimentação linear para aplicações de baixa potência.
+</p>
+
+</section>
+
+<section>
+
+<h2>Objetivos de Aprendizagem</h2>
+
+<ul>
+
+<li>Compreender a estrutura completa de uma fonte linear.</li>
+
+<li>Dimensionar transformadores para aplicações eletrônicas.</li>
+
+<li>Projetar sistemas de proteção com fusível e NTC.</li>
+
+<li>Calcular pontes retificadoras.</li>
+
+<li>Calcular capacitores de filtro.</li>
+
+<li>Analisar o fenômeno do ripple.</li>
+
+<li>Projetar reguladores utilizando diodos zener.</li>
+
+<li>Projetar reguladores baseados no LM317.</li>
+
+<li>Realizar análises térmicas.</li>
+
+<li>Interpretar esquemas elétricos de fontes lineares.</li>
+
+</ul>
+
+</section>
+
+<section>
+
+<h2>Especificações do Projeto</h2>
+
+<table>
+
+<tr>
+<th>Parâmetro</th>
+<th>Valor</th>
+</tr>
+
+<tr>
+<td>Tensão de Entrada</td>
+<td>127/220 Vac</td>
+</tr>
+
+<tr>
+<td>Frequência</td>
+<td>60 Hz</td>
+</tr>
+
+<tr>
+<td>Retificação</td>
+<td>Ponte de Diodos</td>
+</tr>
+
+<tr>
+<td>Proteção</td>
+<td>Fusível + NTC</td>
+</tr>
+
+<tr>
+<td>Filtro Principal</td>
+<td>6800µF / 63V</td>
+</tr>
+
+<tr>
+<td>Saída 1</td>
+<td>33Vcc / 100mA (Zener)</td>
+</tr>
+
+<tr>
+<td>Saída 2</td>
+<td>1,25V a 33Vcc / 1A (LM317)</td>
+</tr>
+
+<tr>
+<td>Transformador</td>
+<td>30Vac / 2A</td>
+</tr>
+
+</table>
+
+</section>
+
+<section>
+
+<h2>Diagrama em Blocos da Fonte</h2>
+
+<div class="diagram">
+
+REDE 127/220Vac
+
+<br>│
+<br>▼
+
+<br>FUSÍVEL
+
+<br>│
+<br>▼
+
+<br>NTC
+
+<br>│
+<br>▼
+
+<br>TRANSFORMADOR
+
+<br>30Vac / 2A
+
+<br>│
+<br>▼
+
+<br>PONTE RETIFICADORA
+
+<br>│
+<br>▼
+
+<br>FILTRO 6800µF
+
+<br>│
+
+<br>+41Vcc
+
+<br>│
+
+<br>┌───────────────┬───────────────┐
+
+<br>│                               │
+
+<br>▼                               ▼
+
+<br>REGULADOR ZENER          REGULADOR LM317
+
+<br>33V / 100mA             1,25V a 33V / 1A
+
+</div>
+
+</section>
+
+<section>
+
+<h2>Competências Desenvolvidas</h2>
+
+<div class="block">
+
+<p><strong>Ao concluir esta apostila o aluno será capaz de:</strong></p>
+
+<ul>
+
+<li>Projetar fontes lineares completas.</li>
+
+<li>Dimensionar componentes através de cálculos analíticos.</li>
+
+<li>Interpretar folhas de dados (datasheets).</li>
+
+<li>Avaliar dissipação de potência.</li>
+
+<li>Realizar medições em laboratório.</li>
+
+<li>Comparar diferentes técnicas de regulação.</li>
+
+<li>Validar projetos eletrônicos através de critérios de engenharia.</li>
+
+</ul>
+
+</div>
+
+</section>
+
+<section>
+
+<h2>Estrutura da Apostila</h2>
+
+<ol>
+
+<li>Introdução às Fontes Lineares</li>
+
+<li>Proteções Elétricas</li>
+
+<li>Transformadores</li>
+
+<li>Ponte Retificadora</li>
+
+<li>Retificação de Onda Completa</li>
+
+<li>Filtragem Capacitiva</li>
+
+<li>Ripple</li>
+
+<li>Projeto da Saída Zener</li>
+
+<li>Projeto da Saída LM317</li>
+
+<li>Análise Térmica</li>
+
+<li>Montagem Final</li>
+
+<li>Exercícios Resolvidos</li>
+
+<li>Projeto de Laboratório</li>
+
+</ol>
+
+</section>
+
+</div>
+
+<footer>
+
+Projeto Didático de Engenharia Elétrica<br>
+Fonte Linear Dupla Regulada
+
+</footer>
+
+</body>
+</html>

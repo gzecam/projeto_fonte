@@ -1,1 +1,661 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><title>capitulo04_filtragem</title></head><body><h1>capitulo04_filtragem</h1><p>Arquivo da apostila web gerado a partir das páginas desenvolvidas no chat.</p></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Capítulo 4 - Filtragem Capacitiva</title>
+
+<style>
+
+:root{
+    --azul:#003366;
+    --azul2:#0B63CE;
+    --verde:#e8f5e9;
+    --amarelo:#fff8e1;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f5f5f5;
+    color:#333;
+    line-height:1.8;
+}
+
+header{
+    background:var(--azul);
+    color:white;
+    padding:50px;
+    text-align:center;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:40px;
+}
+
+section{
+    background:white;
+    padding:30px;
+    margin-bottom:25px;
+    border-radius:8px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+h1,h2,h3{
+    color:var(--azul);
+    margin-bottom:15px;
+}
+
+.formula{
+    background:#eef5ff;
+    border-left:5px solid var(--azul2);
+    padding:15px;
+    margin:15px 0;
+    font-family:Consolas, monospace;
+}
+
+.diagrama{
+    background:#f8f8f8;
+    padding:20px;
+    text-align:center;
+    font-family:monospace;
+    margin-top:20px;
+}
+
+.exemplo{
+    background:var(--verde);
+    padding:20px;
+    margin-top:15px;
+    border-radius:5px;
+}
+
+.exercicio{
+    background:var(--amarelo);
+    border-left:5px solid orange;
+    padding:20px;
+    margin-top:15px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+th{
+    background:var(--azul);
+    color:white;
+}
+
+td,th{
+    border:1px solid #ccc;
+    padding:12px;
+}
+
+footer{
+    text-align:center;
+    background:var(--azul);
+    color:white;
+    padding:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>CAPÍTULO 4</h1>
+
+<h2>Filtragem Capacitiva e Ripple</h2>
+
+</header>
+
+<div class="container">
+
+<section>
+
+<h2>1. Introdução</h2>
+
+<p>
+
+Após a ponte retificadora a tensão continua apresentando variações periódicas.
+
+Embora todos os semiciclos sejam positivos, ainda não temos uma tensão contínua perfeita.
+
+</p>
+
+<p>
+
+O capacitor de filtro tem a função de armazenar energia quando a tensão sobe e devolvê-la ao circuito quando a tensão desce.
+
+</p>
+
+</section>
+
+<section>
+
+<h2>2. Forma de Onda Sem Filtragem</h2>
+
+<div class="diagrama">
+
+       /\        /\        /\
+
+      /  \      /  \      /  \
+
+_____/____\____/____\____/____\____
+
+</div>
+
+<p>
+
+Observe que existem espaços entre os picos da tensão retificada.
+
+</p>
+
+<p>
+
+Essas variações são inadequadas para alimentar circuitos eletrônicos de precisão.
+
+</p>
+
+</section>
+
+<section>
+
+<h2>3. Inserindo o Capacitor de Filtro</h2>
+
+<div class="diagrama">
+
+ +Vcc Pulsante
+
+      │
+
+      ├───────► Saída
+
+      │
+
+     ===
+
+      C
+
+     ===
+
+      │
+
+     GND
+
+</div>
+
+<p>
+
+O capacitor carrega-se no valor de pico da tensão e descarrega-se lentamente através da carga.
+
+</p>
+
+</section>
+
+<section>
+
+<h2>4. Forma de Onda Após Filtragem</h2>
+
+<div class="diagrama">
+
+      _____________
+
+     /             \
+
+____/               \____
+
+    \               /
+
+     \_____________/
+
+</div>
+
+<p>
+
+A tensão torna-se muito mais estável, porém ainda apresenta pequenas ondulações.
+
+</p>
+
+</section>
+
+<section>
+
+<h2>5. Conceito de Ripple</h2>
+
+<p>
+
+Ripple é a ondulação residual presente na tensão contínua.
+
+</p>
+
+<div class="formula">
+
+Ripple = Vmáx − Vmín
+
+</div>
+
+<p>
+
+Quanto menor o ripple, melhor a qualidade da fonte.
+
+</p>
+
+</section>
+
+<section>
+
+<h2>6. Corrente Total da Fonte</h2>
+
+<p>
+
+Nossa fonte possui duas saídas:
+
+</p>
+
+<table>
+
+<tr>
+<th>Saída</th>
+<th>Corrente</th>
+</tr>
+
+<tr>
+<td>LM317</td>
+<td>1,0A</td>
+</tr>
+
+<tr>
+<td>Zener</td>
+<td>0,1A</td>
+</tr>
+
+<tr>
+<td>Total</td>
+<td>1,1A</td>
+</tr>
+
+</table>
+
+</section>
+
+<section>
+
+<h2>7. Definição do Ripple de Projeto</h2>
+
+<p>
+
+Para este projeto adotaremos:
+
+</p>
+
+<div class="formula">
+
+Vr = 2Vpp
+
+</div>
+
+<p>
+
+(2 Volts pico a pico)
+
+</p>
+
+</section>
+
+<section>
+
+<h2>8. Frequência do Ripple</h2>
+
+<p>
+
+Conforme estudado na ponte retificadora:
+
+</p>
+
+<div class="formula">
+
+f = 120Hz
+
+</div>
+
+<p>
+
+Pois a retificação de onda completa dobra a frequência da rede.
+
+</p>
+
+</section>
+
+<section>
+
+<h2>9. Dimensionamento do Capacitor</h2>
+
+<p>
+
+A capacitância pode ser calculada pela expressão:
+
+</p>
+
+<div class="formula">
+
+C = I / (f × Vr)
+
+</div>
+
+Substituindo os valores:
+
+<div class="formula">
+
+C = 1,1 / (120 × 2)
+
+</div>
+
+<div class="formula">
+
+C = 1,1 / 240
+
+</div>
+
+<div class="formula">
+
+C = 0,00458 F
+
+</div>
+
+Convertendo:
+
+<div class="formula">
+
+C = 4580µF
+
+</div>
+
+</section>
+
+<section>
+
+<h2>10. Escolha Comercial</h2>
+
+<p>
+
+Como 4580µF não é um valor comercial padrão:
+
+</p>
+
+<div class="formula">
+
+Próximo valor disponível = 4700µF
+
+</div>
+
+<p>
+
+Porém é recomendável utilizar uma margem de segurança.
+
+</p>
+
+<div class="formula">
+
+Capacitor Adotado = 6800µF
+
+</div>
+
+</section>
+
+<section>
+
+<h2>11. Tensão de Trabalho do Capacitor</h2>
+
+<p>
+
+Após a ponte retificadora calculamos aproximadamente:
+
+</p>
+
+<div class="formula">
+
+Vcc ≈ 41V
+
+</div>
+
+<p>
+
+Capacitores nunca devem trabalhar próximos ao seu limite máximo.
+
+</p>
+
+<table>
+
+<tr>
+<th>Capacitor</th>
+<th>Adequado?</th>
+</tr>
+
+<tr>
+<td>50V</td>
+<td>Aceitável</td>
+</tr>
+
+<tr>
+<td>63V</td>
+<td>Ideal</td>
+</tr>
+
+</table>
+
+<div class="exemplo">
+
+Componente recomendado:
+
+<br><br>
+
+6800µF / 63V
+
+</div>
+
+</section>
+
+<section>
+
+<h2>12. Energia Armazenada no Capacitor</h2>
+
+<p>
+
+A energia armazenada é dada por:
+
+</p>
+
+<div class="formula">
+
+E = ½ × C × V²
+
+</div>
+
+Substituindo:
+
+<div class="formula">
+
+E = 0,5 × 0,0068 × 41²
+
+</div>
+
+<div class="formula">
+
+E ≈ 5,7 Joules
+
+</div>
+
+<p>
+
+Essa energia é liberada para a carga durante os intervalos entre os semiciclos.
+
+</p>
+
+</section>
+
+<section>
+
+<h2>13. Circuito Desenvolvido Até Aqui</h2>
+
+<div class="diagrama">
+
+REDE
+
+ │
+
+ ▼
+
+FUSÍVEL
+
+ │
+
+ ▼
+
+NTC
+
+ │
+
+ ▼
+
+TRANSFORMADOR
+
+30Vac / 2A
+
+ │
+
+ ▼
+
+PONTE RETIFICADORA
+
+ │
+
+ ▼
+
+6800µF / 63V
+
+ │
+
+ ▼
+
+≈ 41Vcc
+
+</div>
+
+</section>
+
+<section>
+
+<h2>14. Exercícios Propostos</h2>
+
+<div class="exercicio">
+
+<h3>Exercício 1</h3>
+
+Calcule o capacitor necessário para:
+
+<br>
+
+I = 2A
+
+<br>
+
+Vr = 1V
+
+<br>
+
+f = 120Hz
+
+</div>
+
+<div class="exercicio">
+
+<h3>Exercício 2</h3>
+
+Explique por que aumentar a capacitância reduz o ripple.
+
+</div>
+
+<div class="exercicio">
+
+<h3>Exercício 3</h3>
+
+Por que não é recomendável utilizar um capacitor de 35V neste projeto?
+
+</div>
+
+</section>
+
+<section>
+
+<h2>15. Exercício Resolvido</h2>
+
+<h3>Exercício 1</h3>
+
+<div class="formula">
+
+C = I / (f × Vr)
+
+</div>
+
+<div class="formula">
+
+C = 2 / (120 × 1)
+
+</div>
+
+<div class="formula">
+
+C = 0,0167F
+
+</div>
+
+<div class="formula">
+
+C = 16700µF
+
+</div>
+
+<p>
+
+Logo seria necessário um capacitor próximo de:
+
+</p>
+
+<div class="formula">
+
+18000µF
+
+</div>
+
+</section>
+
+</div>
+
+<footer>
+
+Projeto de Fonte Linear Dupla Regulada
+
+<br>
+
+Capítulo 4 - Filtragem Capacitiva e Ripple
+
+</footer>
+
+</body>
+
+</html>

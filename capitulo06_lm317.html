@@ -1,1 +1,733 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><title>capitulo06_lm317</title></head><body><h1>capitulo06_lm317</h1><p>Arquivo da apostila web gerado a partir das páginas desenvolvidas no chat.</p></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Capítulo 6 - Regulador LM317</title>
+
+<style>
+
+:root{
+    --azul:#003366;
+    --azul2:#0D6EFD;
+    --verde:#E8F5E9;
+    --amarelo:#FFF8E1;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f5f5f5;
+    color:#333;
+    line-height:1.8;
+}
+
+header{
+    background:var(--azul);
+    color:white;
+    padding:50px;
+    text-align:center;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:40px;
+}
+
+section{
+    background:white;
+    margin-bottom:25px;
+    padding:30px;
+    border-radius:8px;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+h1,h2,h3{
+    color:var(--azul);
+    margin-bottom:15px;
+}
+
+.formula{
+    background:#eef5ff;
+    border-left:5px solid var(--azul2);
+    padding:15px;
+    margin:15px 0;
+    font-family:Consolas, monospace;
+}
+
+.diagrama{
+    background:#f8f8f8;
+    padding:20px;
+    text-align:center;
+    font-family:monospace;
+    margin-top:20px;
+}
+
+.exemplo{
+    background:var(--verde);
+    padding:20px;
+    border-radius:5px;
+    margin-top:15px;
+}
+
+.exercicio{
+    background:var(--amarelo);
+    border-left:5px solid orange;
+    padding:20px;
+    margin-top:15px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+th{
+    background:var(--azul);
+    color:white;
+}
+
+th,td{
+    border:1px solid #ccc;
+    padding:12px;
+}
+
+footer{
+    text-align:center;
+    background:var(--azul);
+    color:white;
+    padding:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>CAPÍTULO 6</h1>
+
+<h2>Regulador Ajustável LM317</h2>
+
+</header>
+
+<div class="container">
+
+<section>
+
+<h2>1. Introdução</h2>
+
+<p>
+
+O LM317 é um regulador linear ajustável de três terminais amplamente utilizado em projetos eletrônicos.
+
+</p>
+
+<p>
+
+Possui proteções internas contra:
+
+</p>
+
+<ul>
+
+<li>Curto-circuito;</li>
+<li>Excesso de temperatura;</li>
+<li>Sobrecorrente;</li>
+
+</ul>
+
+<p>
+
+Além disso, permite ajustar a tensão de saída através de apenas dois resistores.
+
+</p>
+
+</section>
+
+<section>
+
+<h2>2. Características Principais</h2>
+
+<table>
+
+<tr>
+<th>Parâmetro</th>
+<th>Valor</th>
+</tr>
+
+<tr>
+<td>Tensão de Saída</td>
+<td>1,25V a 37V</td>
+</tr>
+
+<tr>
+<td>Corrente Máxima</td>
+<td>1,5A</td>
+</tr>
+
+<tr>
+<td>Proteção Térmica</td>
+<td>Sim</td>
+</tr>
+
+<tr>
+<td>Proteção Contra Curto</td>
+<td>Sim</td>
+</tr>
+
+</table>
+
+</section>
+
+<section>
+
+<h2>3. Pinagem</h2>
+
+<div class="diagrama">
+
+          LM317
+
+       ___________
+
+      |           |
+
+ IN ---| 1       3 |--- OUT
+
+      |           |
+
+ ADJ --| 2         |
+
+      |___________|
+
+</div>
+
+</section>
+
+<section>
+
+<h2>4. Funcionamento Básico</h2>
+
+<p>
+
+Internamente o LM317 mantém uma tensão de referência fixa entre os terminais OUT e ADJ.
+
+</p>
+
+<div class="formula">
+
+Vref = 1,25V
+
+</div>
+
+<p>
+
+A partir dessa referência é possível determinar a tensão de saída através de uma rede resistiva.
+
+</p>
+
+</section>
+
+<section>
+
+<h2>5. Circuito Básico</h2>
+
+<div class="diagrama">
+
+           LM317
+
+41V ─── IN
+
+          OUT ──────► Vout
+
+            │
+
+           R1
+
+            │
+
+          ADJ
+
+            │
+
+           R2
+
+            │
+
+           GND
+
+</div>
+
+</section>
+
+<section>
+
+<h2>6. Equação do LM317</h2>
+
+<div class="formula">
+
+Vout = 1,25 (1 + R2/R1)
+
+</div>
+
+<p>
+
+Esta será a principal equação utilizada no projeto.
+
+</p>
+
+</section>
+
+<section>
+
+<h2>7. Escolha de R1</h2>
+
+<p>
+
+Os fabricantes recomendam o seguinte valor padrão:
+
+</p>
+
+<div class="formula">
+
+R1 = 240Ω
+
+</div>
+
+<p>
+
+Esse valor será utilizado em nosso projeto.
+
+</p>
+
+</section>
+
+<section>
+
+<h2>8. Determinação de R2 para 33V</h2>
+
+<div class="formula">
+
+33 = 1,25 (1 + R2/240)
+
+</div>
+
+<div class="formula">
+
+26,4 = 1 + R2/240
+
+</div>
+
+<div class="formula">
+
+25,4 = R2/240
+
+</div>
+
+<div class="formula">
+
+R2 = 6096Ω
+
+</div>
+
+<div class="formula">
+
+R2 ≈ 6,1kΩ
+
+</div>
+
+</section>
+
+<section>
+
+<h2>9. Solução Prática</h2>
+
+<p>
+
+Para permitir ajuste contínuo utilizaremos:
+
+</p>
+
+<div class="exemplo">
+
+R1 = 240Ω
+
+<br><br>
+
+R2 = 1kΩ + Potenciômetro 5kΩ
+
+</div>
+
+<p>
+
+Isso permitirá variar a saída desde aproximadamente 1,25V até valores próximos de 33V.
+
+</p>
+
+</section>
+
+<section>
+
+<h2>10. Verificação da Tensão Máxima</h2>
+
+<div class="formula">
+
+R2 = 1000 + 5000
+
+</div>
+
+<div class="formula">
+
+R2 = 6000Ω
+
+</div>
+
+Aplicando:
+
+<div class="formula">
+
+Vout = 1,25 (1 + 6000/240)
+
+</div>
+
+<div class="formula">
+
+Vout = 1,25 (26)
+
+</div>
+
+<div class="formula">
+
+Vout ≈ 32,5V
+
+</div>
+
+<p>
+
+Valor extremamente próximo da especificação nominal.
+
+</p>
+
+</section>
+
+<section>
+
+<h2>11. Capacitores de Estabilidade</h2>
+
+<p>
+
+Os capacitores evitam oscilações e melhoram a resposta dinâmica do regulador.
+
+</p>
+
+<table>
+
+<tr>
+<th>Local</th>
+<th>Capacitor</th>
+</tr>
+
+<tr>
+<td>Entrada</td>
+<td>100nF</td>
+</tr>
+
+<tr>
+<td>Saída</td>
+<td>100nF</td>
+</tr>
+
+<tr>
+<td>Saída</td>
+<td>10µF</td>
+</tr>
+
+</table>
+
+</section>
+
+<section>
+
+<h2>12. Corrente Máxima da Saída</h2>
+
+<p>
+
+A especificação do projeto é:
+
+</p>
+
+<div class="formula">
+
+Imax = 1A
+
+</div>
+
+<p>
+
+O LM317 suporta até aproximadamente 1,5A, atendendo ao requisito.
+
+</p>
+
+</section>
+
+<section>
+
+<h2>13. Eficiência Teórica</h2>
+
+<p>
+
+Considerando:
+
+</p>
+
+<div class="formula">
+
+Vin = 41V
+
+</div>
+
+<div class="formula">
+
+Vout = 33V
+
+</div>
+
+<div class="formula">
+
+η = Vout / Vin
+
+</div>
+
+<div class="formula">
+
+η = 33 / 41
+
+</div>
+
+<div class="formula">
+
+η = 0,805
+
+</div>
+
+<div class="formula">
+
+η ≈ 80,5%
+
+</div>
+
+</section>
+
+<section>
+
+<h2>14. Comparação com o Regulador Zener</h2>
+
+<table>
+
+<tr>
+<th>Característica</th>
+<th>Zener</th>
+<th>LM317</th>
+</tr>
+
+<tr>
+<td>Complexidade</td>
+<td>Baixa</td>
+<td>Média</td>
+</tr>
+
+<tr>
+<td>Corrente Disponível</td>
+<td>100mA</td>
+<td>1A</td>
+</tr>
+
+<tr>
+<td>Ajustável</td>
+<td>Não</td>
+<td>Sim</td>
+</tr>
+
+<tr>
+<td>Ripple Residual</td>
+<td>Maior</td>
+<td>Menor</td>
+</tr>
+
+<tr>
+<td>Regulação</td>
+<td>Média</td>
+<td>Excelente</td>
+</tr>
+
+</table>
+
+</section>
+
+<section>
+
+<h2>15. Exercícios Propostos</h2>
+
+<div class="exercicio">
+
+<h3>Exercício 1</h3>
+
+Calcule a tensão de saída para:
+
+<br>
+
+R1 = 240Ω
+
+<br>
+
+R2 = 2kΩ
+
+</div>
+
+<div class="exercicio">
+
+<h3>Exercício 2</h3>
+
+Calcule o valor de R2 para obter uma saída de 24V.
+
+</div>
+
+<div class="exercicio">
+
+<h3>Exercício 3</h3>
+
+Explique a função do terminal ADJ.
+
+</div>
+
+</section>
+
+<section>
+
+<h2>16. Exercícios Resolvidos</h2>
+
+<h3>Exercício 1</h3>
+
+<div class="formula">
+
+Vout = 1,25 (1 + 2000/240)
+
+</div>
+
+<div class="formula">
+
+Vout = 1,25 (9,33)
+
+</div>
+
+<div class="formula">
+
+Vout ≈ 11,7V
+
+</div>
+
+<h3>Exercício 2</h3>
+
+<div class="formula">
+
+24 = 1,25 (1 + R2/240)
+
+</div>
+
+<div class="formula">
+
+R2 ≈ 4,36kΩ
+
+</div>
+
+</section>
+
+<section>
+
+<h2>17. Sistema Desenvolvido Até Aqui</h2>
+
+<div class="diagrama">
+
+REDE
+
+ │
+
+ ▼
+
+FUSÍVEL
+
+ │
+
+ ▼
+
+NTC
+
+ │
+
+ ▼
+
+TRANSFORMADOR
+
+ │
+
+ ▼
+
+PONTE
+
+ │
+
+ ▼
+
+6800µF
+
+ │
+
+ ▼
+
+41Vcc
+
+ │
+
+ ├────────► ZENER
+
+ │          33V/100mA
+
+ │
+
+ └────────► LM317
+
+            1,25V a 33V
+
+            1A
+
+</div>
+
+</section>
+
+</div>
+
+<footer>
+
+Projeto de Fonte Linear Dupla Regulada
+
+<br>
+
+Capítulo 6 - Regulador Ajustável LM317
+
+</footer>
+
+</body>
+
+</html>
