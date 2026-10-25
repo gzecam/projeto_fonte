@@ -17,6 +17,49 @@
     --branco:#ffffff;
 }
 
+.navbar{
+    background:#00264d;
+    padding:15px;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.navbar a{
+    color:white;
+    text-decoration:none;
+    padding:8px 14px;
+    border-radius:5px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.navbar a:hover{
+    background:#0e5aa7;
+}
+
+.navigation{
+    display:flex;
+    justify-content:flex-end;
+    margin-top:30px;
+}
+
+.navigation a{
+    background:#003366;
+    color:white;
+    text-decoration:none;
+    padding:12px 20px;
+    border-radius:5px;
+}
+
+.navigation a:hover{
+    background:#0e5aa7;
+}
+
 *{
     margin:0;
     padding:0;
@@ -31,17 +74,22 @@ body{
 }
 
 header{
-    background:var(--azul);
-    color:white;
-    padding:60px 30px;
-    text-align:center;
+    background:linear-gradient(
+        135deg,
+        #00264d,
+        #004080
+    );
 }
+
 
 header h1{
     font-size:3rem;
+    text-align:center;
+    margin-bottom:15px;
 }
 
 header h2{
+    text-align:center;
     font-weight:normal;
     margin-top:15px;
 }
@@ -115,19 +163,190 @@ footer{
     color:white;
 }
 
+.logo-container{
+    text-align:center;
+    margin:30px 0;
+}
+
+.logo-container img{
+    max-width:450px;
+    width:90%;
+    height:auto;
+}
+
+.navbar{
+    background:#00264d;
+    padding:12px 25px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.navbar-logo img{
+    max-width:140px;
+    height:auto;
+
+    background:white;
+    padding:5px;
+
+    border-radius:8px;
+
+    box-shadow:0 2px 8px rgba(0,0,0,.2);
+}
+
+.navbar-links{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+}
+
+.navbar-links a{
+    color:white;
+    text-decoration:none;
+
+    padding:8px 12px;
+
+    border-radius:5px;
+
+    font-weight:bold;
+
+    transition:0.3s;
+}
+
+.navbar-links a:hover{
+    background:#0e5aa7;
+}
+
+header{
+
+    background:linear-gradient(
+        135deg,
+        #003366,
+        #0e5aa7
+    );
+
+    color:white;
+
+    padding:70px 20px;
+}
+
+.titulo-principal{
+    text-align:center;
+    max-width:1000px;
+    margin:auto;
+}
+
+.titulo-principal h1{
+    color:#FFFFFF;
+    font-size:3rem;
+    margin-bottom:30px;
+}
+
+.titulo-principal h2{
+    color:#FFFFFF;
+    font-size:1.4rem;
+    font-weight:600;
+    margin-top:15px;
+}
+
+.titulo-principal p{
+    color:#FFFFFF;
+    font-size:1.2rem;
+    margin-top:5px;
+}
+
+
+footer{
+    text-align:center;
+    padding:30px;
+    background:var(--azul);
+    color:white;
+}
+
+.footer-content h3{
+    color:white;
+    margin-bottom:10px;
+}
+
+.footer-content p{
+    margin:5px 0;
+}
+
+.autor{
+    margin-top:15px;
+    font-style:italic;
+    font-weight:600;
+    color:#d9e8ff;
+}
 </style>
 </head>
 
 <body>
+<body>
+
+<nav class="navbar">
+
+    <div class="navbar-logo">
+        <img src="images/mackenzie-logo.png"
+             alt="Universidade Presbiteriana Mackenzie">
+    </div>
+
+    <div class="navbar-links">
+
+        <a href="index.html">Início</a>
+
+        <a href="capitulo01_protecoes.html">Cap. 1</a>
+
+        <a href="capitulo02_transformador.html">Cap. 2</a>
+
+        <a href="capitulo03_ponte_retificadora.html">Cap. 3</a>
+
+        <a href="capitulo04_filtragem.html">Cap. 4</a>
+
+        <a href="capitulo05_zener.html">Cap. 5</a>
+
+        <a href="capitulo06_lm317.html">Cap. 6</a>
+
+        <a href="capitulo07_analise_termica.html">Cap. 7</a>
+
+        <a href="capitulo08_esquematico_completo.html">Cap. 8</a>
+
+        <a href="capitulo09_ensaios_comissionamento.html">Cap. 9</a>
+
+        <a href="capitulo10_projeto_laboratorio.html">Cap. 10</a>
+
+    </div>
+
+</nav>
 
 <header>
 
-<h1>PROJETO DE FONTE LINEAR DUPLA REGULADA</h1>
+    <div class="titulo-principal">
 
-<h2>
-Saída Zener 33V / 100mA<br>
-Saída LM317 1,25V a 33V / 1A
-</h2>
+        <h1>PROJETO DE FONTE LINEAR DUPLA REGULADA</h1>
+
+        <h2>Saída Regulada por Zener</h2>
+
+        <p>33 Vcc / 100 mA</p>
+
+        <h2>Saída Regulada por LM317</h2>
+
+        <p>1,25 Vcc a 33 Vcc / 1 A</p>
+
+    </div>
+
+</header>
+
+<div class="container">
+
+
 
 </header>
 
@@ -370,9 +589,19 @@ REDE 127/220Vac
 
 <footer>
 
-Projeto Didático de Engenharia Elétrica<br>
-Fonte Linear Dupla Regulada
+<h3>Projeto Didático de Engenharia Elétrica</h3>
 
+<p>Fonte Linear Dupla Regulada</p>
+
+<p class="autor">
+Elaborado por: Professor Gleydson Zeca Monteiro
+<div class="navigation">
+
+<a href="capitulo01_protecoes.html">
+Próximo Capítulo ►
+</a>
+
+</div>
 </footer>
 
 </body>
